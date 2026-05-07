@@ -1,0 +1,33 @@
+{
+  "name": "AI Engineer Career OS",
+  "short_name": "Career OS",
+  "description": "Samar's AI Engineer 3-Year Career Operating System — track progress, earn XP, land the job.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#0d0f17",
+  "theme_color": "#7c5cfc",
+  "lang": "en",
+  "categories": ["education", "productivity"],
+  "icons": [
+    { "src": "./assets/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
+    { "src": "./assets/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ],
+  "shortcuts": [
+    {
+      "name": "Focus Mode",
+      "short_name": "Focus",
+      "description": "Jump straight to today's tasks",
+      "url": "./#focus",
+      "icons": [{ "src": "./assets/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Roadmap",
+      "short_name": "Roadmap",
+      "description": "View your full roadmap",
+      "url": "./#roadmap",
+      "icons": [{ "src": "./assets/icon-192.png", "sizes": "192x192" }]
+    }
+  ]
+}

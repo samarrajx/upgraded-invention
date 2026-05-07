@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>AI Engineer OS</title>
+  
+  <!-- PWA Metadata -->
+  <meta name="theme-color" content="#0a0a0f">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="AI Eng OS">
+  <link rel="manifest" href="./manifest.json">
+  <link rel="apple-touch-icon" href="./assets/icon-192.png">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="./css/tokens.css">
+  <link rel="stylesheet" href="./css/layout.css">
+  <link rel="stylesheet" href="./css/components.css">
+  <link rel="stylesheet" href="./css/animations.css">
+</head>
+<body class="theme-dark">
+
+  <!-- Desktop Sidebar -->
+  <nav class="sidebar">
+    <div class="brand">
+      <div class="brand-icon">🧠</div>
+      <div style="display:flex;flex-direction:column;">
+        <span>AI Eng OS</span>
+        <div style="font-size:10px;font-weight:700;color:var(--primary);margin-top:2px;letter-spacing:0.05em;text-transform:uppercase;">
+          Level <span id="sidebar-lvl">1</span> • <span id="sidebar-xp">0</span> XP
+        </div>
+      </div>
+    </div>
+    <div class="nav-links">
+      <a href="#dashboard" class="nav-item active" data-route="dashboard">
+        <span class="nav-icon">⊞</span> Dashboard
+      </a>
+      <a href="#roadmap" class="nav-item" data-route="roadmap">
+        <span class="nav-icon">🗺️</span> Roadmap
+      </a>
+      <a href="#focus" class="nav-item" data-route="focus">
+        <span class="nav-icon">🎯</span> Focus
+      </a>
+      <a href="#analytics" class="nav-item" data-route="analytics">
+        <span class="nav-icon">📈</span> Analytics
+      </a>
+      <a href="#heatmap" class="nav-item" data-route="heatmap">
+        <span class="nav-icon">🔥</span> Heatmap
+      </a>
+      <a href="#internships" class="nav-item" data-route="internships">
+        <span class="nav-icon">💼</span> Internships
+      </a>
+      <a href="#interviews" class="nav-item" data-route="interviews">
+        <span class="nav-icon">🎤</span> Interviews
+      </a>
+      <a href="#settings" class="nav-item" data-route="settings">
+        <span class="nav-icon">⚙️</span> Settings
+      </a>
+    </div>
+  </nav>
+
+  <!-- Mobile Top Header -->
+  <header class="mobile-header">
+    <div class="brand">
+      <div class="brand-icon" style="width:28px;height:28px;font-size:14px;">🧠</div>
+      <span>AI Eng OS</span>
+    </div>
+    <div class="profile-pill">
+      Lvl <span id="hdr-lvl">1</span> • <span id="hdr-xp">0</span> XP
+    </div>
+  </header>
+
+  <!-- Main Content Area -->
+  <main class="main-content">
+    <div id="app" class="anim-fade-in">
+      <div style="display:flex; flex-direction:column; align-items:center; justify-content:center; height:60vh; text-align:center; padding:var(--s12); opacity:0.6;">
+        <div style="font-size:48px; margin-bottom:var(--s4);">⏳</div>
+        <h2 style="margin-bottom:var(--s2);">Initializing Career OS...</h2>
+        <p style="max-width:400px; font-size:14px; line-height:1.6;">
+          If this screen persists, please run the app using a local server (e.g., <b>VS Code Live Server</b> or <code>npx serve</code>). 
+          Modern browsers block security-sensitive features like JS Modules when opening files directly via <code>file://</code>.
+        </p>
+      </div>
+    </div>
+  </main>
+
+  <!-- Mobile Bottom Navigation -->
+  <nav class="bottom-nav">
+    <a href="#dashboard" class="bnav-item active" data-route="dashboard">
+      <span class="bnav-icon">⊞</span>
+      <span>Home</span>
+    </a>
+    <a href="#roadmap" class="bnav-item" data-route="roadmap">
+      <span class="bnav-icon">🗺️</span>
+      <span>Plan</span>
+    </a>
+    <a href="#focus" class="bnav-item" data-route="focus">
+      <span class="bnav-icon">🎯</span>
+      <span>Focus</span>
+    </a>
+    <a href="#internships" class="bnav-item" data-route="internships">
+      <span class="bnav-icon">💼</span>
+      <span>Careers</span>
+    </a>
+  </nav>
+
+  <!-- Toast Container -->
+  <div id="toasts"></div>
+
+  <!-- Confetti Container -->
+  <div id="confetti-container" style="position:fixed;inset:0;pointer-events:none;z-index:9999;overflow:hidden;">
+    <canvas id="confetti-canvas" style="width:100%;height:100%;"></canvas>
+  </div>
+
+  <!-- App Logic -->
+  <script>
+    // Global Error Tracker for Debugging
+    window.addEventListener('error', function(e) {
+      const app = document.getElementById('app');
+      if (app) {
+        app.innerHTML = `
+          <div style="background:rgba(255,0,0,0.1); border:1px solid #ff4444; color:#ff4444; padding:20px; border-radius:12px; margin:20px;">
+            <h3>⚠️ Runtime Error</h3>
+            <p style="font-size:14px; margin:10px 0;">${e.message}</p>
+            <div style="font-size:12px; opacity:0.8;">File: ${e.filename} (Line: ${e.lineno})</div>
+            <p style="margin-top:20px; color:var(--tx-1); font-size:13px;">
+              <b>Common Cause:</b> You are likely opening this file directly in the browser (<code>file://</code>). 
+              Modern browsers block security-sensitive scripts on local files. 
+              <br><br>
+              <b>Fix:</b> Use VS Code's <b>"Live Server"</b> extension or run <code>npx serve</code> in this folder.
+            </p>
+          </div>
+        `;
+      }
+    });
+    window.addEventListener('unhandledrejection', function(e) {
+      console.error('Unhandled Promise Rejection:', e.reason);
+    });
+  </script>
+  <script type="module" src="./js/app.js"></script>
+</body>
+</html>
