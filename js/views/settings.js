@@ -25,6 +25,16 @@ export function render() {
     </div>
   </div>
 
+  <div class="card" id="install-card" style="margin-bottom:var(--s4); display:none;">
+    <div class="section-head"><div class="section-title">App Installation</div></div>
+    <div style="display:flex; flex-direction:column; gap:var(--s2);">
+      <p style="font-size:13px; opacity:0.7; margin-bottom:var(--s2);">Install Career OS on your home screen for fast, offline-first access.</p>
+      <button class="btn btn-primary" onclick="window._installPwa()" style="justify-content:center; width:100%;">
+        📱 Install Career OS
+      </button>
+    </div>
+  </div>
+
   <div class="card" style="margin-bottom:var(--s4);">
     <div class="section-head"><div class="section-title">Data Management</div></div>
     
@@ -78,6 +88,28 @@ export function mount() {
     if(confirm('DANGER: This will delete ALL progress, XP, and logs permanently. Are you sure?')) {
       resetAll();
       window.location.reload();
+    }
+  };
+
+  // PWA Install Logic
+  const installCard = document.getElementById('install-card');
+  const checkInstall = () => {
+    if (window._getPwaPrompt()) {
+      installCard.style.display = 'block';
+    }
+  };
+
+  checkInstall();
+  window.addEventListener('pwa:install-available', checkInstall);
+
+  window._installPwa = async () => {
+    const prompt = window._getPwaPrompt();
+    if (!prompt) return;
+    prompt.prompt();
+    const { outcome } = await prompt.userChoice;
+    if (outcome === 'accepted') {
+      window._clearPwaPrompt();
+      installCard.style.display = 'none';
     }
   };
 }

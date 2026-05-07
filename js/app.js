@@ -57,4 +57,16 @@ function updateHeader(state) {
   window.addEventListener(ev, () => updateHeader(getState()));
 });
 
+// PWA Install Logic
+let deferredPrompt;
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault();
+  deferredPrompt = e;
+  // Notify views that install is available
+  window.dispatchEvent(new CustomEvent('pwa:install-available'));
+});
+
+window._getPwaPrompt = () => deferredPrompt;
+window._clearPwaPrompt = () => { deferredPrompt = null; };
+
 document.addEventListener('DOMContentLoaded', init);
