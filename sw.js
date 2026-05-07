@@ -22,7 +22,9 @@ const ASSETS = [
   './js/views/heatmap.js',
   './js/views/internships.js',
   './js/views/interviews.js',
-  './js/views/settings.js'
+  './js/views/settings.js',
+  './assets/icon-192.png',
+  './assets/icon-512.png'
 ];
 
 self.addEventListener('install', (e) => {
