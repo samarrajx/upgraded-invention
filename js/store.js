@@ -21,6 +21,7 @@ const DEFAULT_STATE = {
   xpHistory: [],     // [{ week: 'YYYY-Www', xp: N }]
   weeklyLog: {},     // { 'YYYY-Www': N } task count per week
   version: 2,
+  dailyGoal: 3
 };
 
 let _state = null;
@@ -211,9 +212,33 @@ export function deleteInterview(id) {
 
 // ── LeetCode ──
 export function setLeetcodeCount(n, note = '') {
+  const delta = n - (_state.leetcodeCount || 0);
   _state.leetcodeCount = n;
-  _state.leetcodeLog.push({ date: _today(), count: n, note });
+  _state.leetcodeLog.push({ 
+    date: _today(), 
+    count: n, 
+    delta,
+    note: note || '' 
+  });
   _save(); _emit('change');
+}
+
+// ── Notes ──
+export function setNote(taskId, text) {
+  _state.notes[taskId] = text;
+  _save(); _emit('change');
+}
+export function getNote(taskId) {
+  return _state.notes[taskId] || '';
+}
+
+// ── Daily Goal ──
+export function setDailyGoal(n) {
+  _state.dailyGoal = n;
+  _save(); _emit('change');
+}
+export function getDailyGoal() {
+  return _state.dailyGoal || 3;
 }
 
 // ── Theme ──
@@ -280,4 +305,31 @@ export function getSkillStats(months) {
 
 export function getTodayCount() {
   return (_state.dailyLog[_today()] || []).length;
+}
+
+// ── Analytics Helpers ──
+export function getBurndownData(months) {
+  const totalTasks = months.reduce((sum, m) =>
+    sum + m.weeks.reduce((s2, w) => s2 + w.tasks.length, 0), 0);
+  const totalDays = 36 * 30; // 3-year roadmap approximate days
+  const startDate = new Date('2025-01-01'); // Roadmap start
+  const today = new Date();
+  const daysPassed = Math.floor((today - startDate) / 86400000);
+
+  const expectedDone = Math.min(totalTasks, Math.round((daysPassed / totalDays) * totalTasks));
+  const actualDone = Object.values(_state.checked).filter(Boolean).length;
+
+  return { totalTasks, expectedDone, actualDone, daysPassed, totalDays };
+}
+
+export function getMonthlyVelocity(months) {
+  const s = _state;
+  return months.map(m => {
+    let done = 0, total = 0;
+    m.weeks.forEach((w, wi) => w.tasks.forEach((_, ti) => {
+      total++;
+      if (s.checked[`${m.id}_w${wi}_t${ti}`]) done++;
+    }));
+    return { label: m.badge, done, total, pct: total ? Math.round(done/total*100) : 0 };
+  });
 }

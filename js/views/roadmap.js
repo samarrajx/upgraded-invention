@@ -1,30 +1,48 @@
 // js/views/roadmap.js — Full roadmap tracker
 
-import { getState, toggleTask } from '../store.js';
+import { getState, toggleTask, setNote, getNote } from '../store.js';
 import { SKILL_COLORS, YEAR_GROUPS, SKILL_LABELS } from '../data.js';
-import { checkBadges, showXPFloat, showToast } from '../gamification.js';
+import { checkBadges, showXPFloat } from '../gamification.js';
 
 let _months = null;
 let _filter = 'all';
-
-
+let _searchQuery = '';
 
 function tid(mid, wi, ti) { return `${mid}_w${wi}_t${ti}`; }
+
+function highlight(text, query) {
+  if (!query) return text;
+  const re = new RegExp(`(${query})`, 'gi');
+  return text.replace(re, '<mark>$1</mark>');
+}
 
 function renderTask(mid, wi, ti, task) {
   const s = getState();
   const id = tid(mid, wi, ti);
   const done = !!s.checked[id];
+  const note = getNote(id);
+
+  // If searching and query doesn't match task title or sub, return empty string if no other match in month
+  // But actually the search filters at month list level. 
+  // Let's just highlight here.
+
   return `
-  <div class="task-row" data-id="${id}" data-xp="${task.xp||10}">
-    <div class="task-check ${done?'done':''}" id="chk-${id}">${done?'✓':''}</div>
-    <div class="task-info">
-      <div class="task-name ${done?'done':''}" id="nm-${id}">${task.t}</div>
-      ${task.s ? `<div class="task-sub">${task.s}</div>` : ''}
+  <div class="task-row-container" id="row-cnt-${id}">
+    <div class="task-row ${done?'done':''}" data-id="${id}" data-xp="${task.xp||10}">
+      <div class="task-check ${done?'done':''}" id="chk-${id}">${done?'✓':''}</div>
+      <div class="task-info">
+        <div class="task-name ${done?'done':''}" id="nm-${id}">${highlight(task.t, _searchQuery)}</div>
+        ${task.s ? `<div class="task-sub">${highlight(task.s, _searchQuery)}</div>` : ''}
+      </div>
+      <div style="display:flex; flex-direction:column; align-items:flex-end; gap:2px; flex-shrink:0;">
+        <button class="btn btn-ghost btn-sm note-toggle-btn" onclick="window._toggleNote('${id}', event)" title="Add Notes">
+          <i data-lucide="sticky-note" style="width:12px; height:12px; opacity:${note ? 1 : 0.4};"></i>
+        </button>
+        <div class="task-xp">+${task.xp||10}</div>
+      </div>
     </div>
-    <div style="display:flex;flex-direction:column;align-items:flex-end;gap:2px;flex-shrink:0;">
-      ${task.time ? `<div class="task-time">${task.time}</div>` : ''}
-      <div class="task-xp">+${task.xp||10}</div>
+    <div class="task-note-area ${note ? 'visible' : ''}" id="note-area-${id}">
+      <textarea class="task-note-input" placeholder="Add a note for this task..." onblur="window._saveNote('${id}', this.value)">${note}</textarea>
     </div>
   </div>`;
 }
@@ -44,10 +62,16 @@ function calcPct(m, filter) {
 
 function renderMonth(m, idx, filter) {
   const visWeeks = m.weeks.filter(w => filter === 'all' || w.skill === filter);
-  if (!visWeeks.length) return '';
+  
+  // Search filter
+  const matchesSearch = _searchQuery === '' || 
+    m.title.toLowerCase().includes(_searchQuery.toLowerCase()) ||
+    m.weeks.some(w => w.tasks.some(t => t.t.toLowerCase().includes(_searchQuery.toLowerCase()) || (t.s && t.s.toLowerCase().includes(_searchQuery.toLowerCase()))));
+
+  if (!visWeeks.length || !matchesSearch) return '';
 
   const { total, done, pct } = calcPct(m, filter);
-  const open = idx === 0 && filter === 'all' && m.id === 'm1';
+  const open = (_searchQuery !== '' || (idx === 0 && filter === 'all' && m.id === 'm1'));
   
   const skillBadges = (m.skills || [])
     .filter(sk => filter === 'all' || sk === filter)
@@ -58,7 +82,7 @@ function renderMonth(m, idx, filter) {
     const wi = m.weeks.indexOf(w);
     const sc2 = SKILL_COLORS[w.skill] || {};
     return `
-    <div>
+    <div class="roadmap-week">
       <div class="week-label" style="color:${sc2.tx||'var(--tx-2)'};">${w.label}</div>
       ${w.tasks.map((task, ti) => renderTask(m.id, wi, ti, task)).join('')}
     </div>`;
@@ -69,7 +93,7 @@ function renderMonth(m, idx, filter) {
     <div class="month-hdr" onclick="window._toggleMonth('${m.id}')">
       <span class="month-badge" style="background:${m.color||'var(--primary-dim)'};color:${m.txt||'var(--primary)'};">${m.badge}</span>
       <div class="month-title-wrap">
-        <div class="month-title">${m.title}</div>
+        <div class="month-title">${highlight(m.title, _searchQuery)}</div>
         <div class="month-badges">${skillBadges}</div>
         <div class="month-prog-wrap">
           <div class="month-prog-fill" id="pf-${m.id}" style="width:${pct}%;background:${m.prog||'var(--primary)'};"></div>
@@ -80,7 +104,7 @@ function renderMonth(m, idx, filter) {
     </div>
     <div class="month-body ${open?'open':''}" id="bd-${m.id}">
       ${weeksHtml}
-      <div class="month-win"><strong>Month win:</strong> ${m.win}</div>
+      <div class="month-win"><strong>Goal:</strong> ${m.win}</div>
       ${m.rule ? `<div class="month-rule">${m.rule}</div>` : ''}
     </div>
   </div>`;
@@ -102,17 +126,19 @@ function renderStats(months, filter) {
 
 function renderMonthList(months, filter) {
   const yearHtml = YEAR_GROUPS.map(yg => {
-    const yearMonths = months.filter(m => yg.ids.includes(m.id) && (filter === 'all' || m.weeks.some(w => w.skill === filter)));
-    if (!yearMonths.length) return '';
+    const yearMonths = months.filter(m => yg.ids.includes(m.id));
+    const visibleMonths = yearMonths.map((m, i) => renderMonth(m, i, filter)).filter(Boolean);
+    
+    if (!visibleMonths.length) return '';
     return `
       <div class="year-group">
         <div class="year-header">${yg.label}</div>
-        ${yearMonths.map((m, i) => renderMonth(m, i, filter)).join('')}
+        ${visibleMonths.join('')}
       </div>
     `;
   }).join('');
 
-  return yearHtml || `<div class="empty-state"><div class="empty-state-icon"><i data-lucide="search"></i></div><div class="empty-state-title">No months match this filter</div></div>`;
+  return yearHtml || `<div class="empty-state"><div class="empty-state-icon"><i data-lucide="search"></i></div><div class="empty-state-title">No matching tasks found</div><div class="empty-state-desc">Try a different keyword or skill filter.</div></div>`;
 }
 
 export function render(months) {
@@ -126,7 +152,7 @@ export function render(months) {
 
   return `
 <div class="view-roadmap">
-  <div class="page-header">
+  <div class="page-header" style="padding-bottom:var(--s4);">
     <div style="display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:var(--s3);">
       <div>
         <div class="page-title"><i data-lucide="map" style="width:24px;height:24px;margin-right:8px;vertical-align:text-bottom;"></i> Career OS Roadmap</div>
@@ -137,7 +163,13 @@ export function render(months) {
         <div style="font-size:12px;color:var(--tx-3);">${done} / ${total} tasks</div>
       </div>
     </div>
-    <div class="prog-wrap" style="margin-top:var(--s4);height:8px;">
+    
+    <div class="search-container" style="margin-top:var(--s6);">
+      <i data-lucide="search" class="search-icon"></i>
+      <input type="text" id="roadmap-search" class="search-input" placeholder="Search tasks, skills, or months..." value="${_searchQuery}">
+    </div>
+
+    <div class="prog-wrap" style="margin-top:var(--s4);height:6px; background:var(--surface-3);">
       <div class="prog-fill" style="width:${pct}%;background:linear-gradient(90deg,var(--primary),var(--accent));"></div>
     </div>
   </div>
@@ -147,6 +179,11 @@ export function render(months) {
   <div id="month-list" class="anim-stagger">
     ${renderMonthList(months, _filter)}
   </div>
+
+  <button class="btn btn-primary" id="jump-current-btn" style="position:fixed; bottom:80px; right:20px; border-radius:50px; padding:12px 20px; box-shadow:0 8px 24px rgba(0,0,0,0.4); z-index:100; font-weight:700; display:flex; align-items:center; gap:8px;">
+    <i data-lucide="navigation-2" style="width:16px; height:16px;"></i>
+    Jump to Current
+  </button>
 </div>`;
 }
 
@@ -159,13 +196,41 @@ export function mount(months) {
       _filter = btn.dataset.f;
       document.querySelectorAll('.filter-tab').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
-      const list = document.getElementById('month-list');
-      list.innerHTML = renderMonthList(months, _filter);
-      _bindTasks(months);
-      _updateTopStats(months);
-      if (window.lucide) window.lucide.createIcons();
+      _refreshList();
     });
   });
+
+  // Search
+  const searchInput = document.getElementById('roadmap-search');
+  if (searchInput) {
+    searchInput.addEventListener('input', (e) => {
+      _searchQuery = e.target.value;
+      _refreshList();
+    });
+  }
+
+  // Jump to Current
+  const jumpBtn = document.getElementById('jump-current-btn');
+  if (jumpBtn) {
+    jumpBtn.addEventListener('click', () => {
+      // Logic: Find first month with < 100% completion
+      const currentMonth = months.find(m => {
+        const { pct } = calcPct(m, 'all');
+        return pct < 100;
+      }) || months[0];
+
+      const el = document.getElementById(`mc-${currentMonth.id}`);
+      if (el) {
+        // Toggle open if closed
+        const body = document.getElementById('bd-' + currentMonth.id);
+        if (body && !body.classList.contains('open')) window._toggleMonth(currentMonth.id);
+        
+        el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        el.classList.add('pulse-highlight');
+        setTimeout(() => el.classList.remove('pulse-highlight'), 2000);
+      }
+    });
+  }
 
   _bindTasks(months);
 
@@ -178,16 +243,44 @@ export function mount(months) {
     body.classList.toggle('open', !isOpen);
     if (chev) chev.style.transform = isOpen ? 'none' : 'rotate(180deg)';
   };
+
+  window._toggleNote = (tid, e) => {
+    e.stopPropagation();
+    const area = document.getElementById(`note-area-${tid}`);
+    area.classList.toggle('visible');
+    if (area.classList.contains('visible')) {
+      area.querySelector('textarea').focus();
+    }
+  };
+
+  window._saveNote = (tid, val) => {
+    setNote(tid, val);
+    // Update icon opacity
+    const btn = document.querySelector(`#row-cnt-${tid} .note-toggle-btn i`);
+    if (btn) btn.style.opacity = val ? '1' : '0.4';
+  };
+}
+
+function _refreshList() {
+  const list = document.getElementById('month-list');
+  if (list) {
+    list.innerHTML = renderMonthList(_months, _filter);
+    _bindTasks(_months);
+    _updateTopStats(_months);
+    if (window.lucide) window.lucide.createIcons();
+  }
 }
 
 function _bindTasks(months) {
   document.querySelectorAll('.task-row[data-id]').forEach(row => {
-    row.addEventListener('click', () => {
+    row.addEventListener('click', (e) => {
+      // Don't toggle if clicking note button or inside note area
+      if (e.target.closest('.note-toggle-btn') || e.target.closest('.task-note-area')) return;
+      
       const id  = row.dataset.id;
       const xpv = parseInt(row.dataset.xp) || 10;
       toggleTask(id, xpv);
       showXPFloat(row, xpv);
-      checkBadges(months);
       _updateTaskUI(id, months);
     });
   });
@@ -196,8 +289,11 @@ function _bindTasks(months) {
 function _updateTaskUI(id, months) {
   const s = getState();
   const done = !!s.checked[id];
+  const row = document.querySelector(`.task-row[data-id="${id}"]`);
   const chk = document.getElementById('chk-' + id);
   const nm  = document.getElementById('nm-'  + id);
+  
+  if (row) row.classList.toggle('done', done);
   if (chk) { chk.className = 'task-check' + (done?' done':''); chk.textContent = done?'✓':''; }
   if (nm)  { nm.className  = 'task-name'   + (done?' done':''); }
 

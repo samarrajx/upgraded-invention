@@ -57,6 +57,38 @@ function updateHeader(state) {
   window.addEventListener(ev, () => updateHeader(getState()));
 });
 
+// Level Up Celebration
+window.addEventListener('store:level-up', (e) => {
+  const { level, title } = e.detail;
+  import('./gamification.js').then(m => {
+    m.launchConfetti();
+    window._openModal(`
+      <div class="modal text-center" style="padding:var(--s10);">
+        <div style="font-size:64px; margin-bottom:var(--s4);">🎉</div>
+        <div class="modal-title" style="font-size:28px; margin-bottom:var(--s2);">Level Up!</div>
+        <div style="font-size:18px; color:var(--primary); font-weight:800; text-transform:uppercase; letter-spacing:2px; margin-bottom:var(--s6);">
+          RANK: ${title}
+        </div>
+        <p style="color:var(--tx-2); line-height:1.6; margin-bottom:var(--s8);">
+          Congratulations Samar! You've reached <b>Level ${level}</b>. Your expertise in AI Engineering is growing.
+        </p>
+        <button class="btn btn-primary" onclick="window._closeModal()" style="width:100%; justify-content:center;">Continue Journey</button>
+      </div>
+    `);
+  });
+});
+
+// Badge Notification
+window.addEventListener('store:badge-awarded', (e) => {
+  const { badgeId } = e.detail;
+  import('./gamification.js').then(m => {
+    const badge = m.getBadgeById(badgeId);
+    if (badge) {
+      m.showToast(`New Badge: ${badge.name}`, badge.icon);
+    }
+  });
+});
+
 // PWA Install Logic
 let deferredPrompt;
 window.addEventListener('beforeinstallprompt', (e) => {
@@ -70,3 +102,38 @@ window._getPwaPrompt = () => deferredPrompt;
 window._clearPwaPrompt = () => { deferredPrompt = null; };
 
 document.addEventListener('DOMContentLoaded', init);
+
+// Global Modal System
+window._openModal = (html) => {
+  const overlay = document.createElement('div');
+  overlay.className = 'modal-overlay';
+  overlay.id = 'active-modal';
+  overlay.innerHTML = html;
+  document.body.appendChild(overlay);
+  
+  // Close on backdrop click
+  overlay.addEventListener('click', (e) => { 
+    if (e.target === overlay) window._closeModal(); 
+  });
+  
+  // Close on Escape key
+  const escHandler = (e) => {
+    if (e.key === 'Escape') {
+      window._closeModal();
+      document.removeEventListener('keydown', escHandler);
+    }
+  };
+  document.addEventListener('keydown', escHandler);
+
+  // Focus first input
+  setTimeout(() => {
+    const firstInput = overlay.querySelector('input:not([type="hidden"]), select, textarea');
+    if (firstInput) firstInput.focus();
+  }, 100);
+
+  if (window.lucide) window.lucide.createIcons();
+};
+
+window._closeModal = () => {
+  document.getElementById('active-modal')?.remove();
+};
