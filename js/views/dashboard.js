@@ -1,6 +1,7 @@
 // js/views/dashboard.js — Command Center
 
 import { getState, getLevelInfo, getProgressStats, getSkillStats, getTodayCount } from '../store.js';
+import { SKILL_LABELS } from '../data.js';
 import { getTodayTasks, getSmartSuggestion, BADGES, showToast } from '../gamification.js';
 
 function greeting() {
@@ -21,12 +22,12 @@ function skillBar(skill, done, total) {
   const colors = {
     python:'var(--s-py-pr)', dsa:'var(--s-ds-pr)', english:'var(--s-en-pr)',
     math:'var(--s-ma-pr)', projects:'var(--s-pr-pr)', interview:'var(--s-in-pr)',
+    system:'var(--s-sy-pr)',
   };
-  const labels = { python:'Python', dsa:'DSA', english:'English', math:'Math', projects:'Projects', interview:'Interview' };
   return `
     <div class="skill-row">
       <div class="skill-row-top">
-        <span class="skill-badge skill-${skill}">${labels[skill]||skill}</span>
+        <span class="skill-badge skill-${skill}">${SKILL_LABELS[skill]||skill}</span>
         <span class="skill-pct">${pct}%</span>
       </div>
       <div class="prog-wrap prog-sm" style="margin-top:6px;">
@@ -40,7 +41,7 @@ function renderTodayTask({ id, task, skill, monthTitle }) {
   const done = !!s.checked[id];
   return `
     <div class="task-row today-task" data-id="${id}" data-xp="${task.xp||10}" style="${done?'opacity:.5':''}">
-      <div class="task-check ${done?'done':''}">${done?'✓':''}</div>
+      <div class="task-check ${done?'done':''}">${done?'<i data-lucide="check" style="width:12px;height:12px;"></i>':''}</div>
       <div class="task-info">
         <div class="task-name ${done?'done':''}">${task.t}</div>
         <div class="task-sub">${monthTitle} · <span class="skill-badge skill-${skill}" style="font-size:9px;padding:1px 6px;">${skill}</span></div>
@@ -52,7 +53,7 @@ function renderTodayTask({ id, task, skill, monthTitle }) {
 function renderBadge(id) {
   const b = BADGES.find(x => x.id === id);
   if (!b) return '';
-  return `<div class="badge-chip" title="${b.desc}"><span>${b.icon}</span><span>${b.name}</span></div>`;
+  return `<div class="badge-chip" title="${b.desc}"><i data-lucide="${b.icon}" style="width:18px;height:18px;"></i><span>${b.name}</span></div>`;
 }
 
 export function render(months) {
@@ -65,25 +66,23 @@ export function render(months) {
   const recentBadges = s.badges.slice(-4).reverse();
   const todayCount = getTodayCount();
 
-  const sgIcon = { weak_skill:'🎯', streak:'🔥', general:'💡' }[suggestion.type] || '💡';
+  const sgIcon = { weak_skill:'target', streak:'flame', general:'lightbulb' }[suggestion.type] || 'lightbulb';
 
   return `
 <div class="view-dashboard">
 
-  <!-- Header -->
   <div class="dash-header">
     <div>
-      <div class="dash-greeting">${greeting()}, Samar 👋</div>
+      <div class="dash-greeting">${greeting()}, Samar <i data-lucide="hand" style="width:20px;height:20px;margin-bottom:-4px;"></i></div>
       <div class="dash-date">${new Date().toLocaleDateString('en-IN',{weekday:'long',year:'numeric',month:'long',day:'numeric'})}</div>
     </div>
     <div class="dash-streak ${s.streak>0?'active':''}">
-      <span class="flame-icon">🔥</span>
+      <i data-lucide="flame" class="flame-icon"></i>
       <span class="streak-num">${s.streak}</span>
       <span class="streak-label">day streak</span>
     </div>
   </div>
 
-  <!-- XP Bar -->
   <div class="xp-hero card" style="margin-bottom:var(--s5);">
     <div class="xp-hero-top">
       <div>
@@ -102,22 +101,21 @@ export function render(months) {
     </div>
   </div>
 
-  <!-- Stat cards -->
   <div class="grid-4 anim-stagger" style="margin-bottom:var(--s5);">
     <div class="stat-card">
-      <div class="stat-card-icon" style="background:var(--primary-dim);">🗺️</div>
+      <div class="stat-card-icon" style="background:var(--primary-dim);"><i data-lucide="map"></i></div>
       <div class="stat-card-value">${prog.pct}%</div>
       <div class="stat-card-label">Roadmap Progress</div>
       <div class="stat-card-sub">${prog.done} / ${prog.total} tasks</div>
     </div>
     <div class="stat-card">
-      <div class="stat-card-icon" style="background:var(--amber-dim);">🔥</div>
+      <div class="stat-card-icon" style="background:var(--amber-dim);"><i data-lucide="flame"></i></div>
       <div class="stat-card-value">${s.streak}</div>
       <div class="stat-card-label">Day Streak</div>
       <div class="stat-card-sub">Best: ${s.longestStreak} days</div>
     </div>
     <div class="stat-card">
-      <div class="stat-card-icon" style="background:var(--sky-dim);">💻</div>
+      <div class="stat-card-icon" style="background:var(--sky-dim);"><i data-lucide="code"></i></div>
       <div class="stat-card-value">${s.leetcodeCount}</div>
       <div class="stat-card-label">LeetCode Solved</div>
       <div class="stat-card-sub">
@@ -125,17 +123,16 @@ export function render(months) {
       </div>
     </div>
     <div class="stat-card">
-      <div class="stat-card-icon" style="background:var(--accent-dim);">📅</div>
+      <div class="stat-card-icon" style="background:var(--accent-dim);"><i data-lucide="calendar"></i></div>
       <div class="stat-card-value">${daysUntilBCA()}</div>
-      <div class="stat-card-label">Days to BCA End</div>
+      <div class="stat-card-label">Days to Graduation</div>
       <div class="stat-card-sub">Target: ₹20–30 LPA</div>
     </div>
   </div>
 
-  <!-- Smart suggestion -->
   <div class="card suggestion-card" style="margin-bottom:var(--s5);border-left:3px solid var(--primary);">
     <div style="display:flex;gap:var(--s3);align-items:flex-start;">
-      <span style="font-size:22px;">${sgIcon}</span>
+      <span style="font-size:24px;color:var(--primary);"><i data-lucide="${sgIcon}"></i></span>
       <div>
         <div style="font-size:13px;font-weight:600;color:var(--tx);margin-bottom:3px;">Smart Focus</div>
         <div style="font-size:13px;color:var(--tx-2);line-height:1.5;">${suggestion.msg}</div>
@@ -145,17 +142,16 @@ export function render(months) {
   </div>
 
   <div class="grid-2" style="gap:var(--s5);margin-bottom:var(--s5);">
-    <!-- Today's tasks -->
     <div>
       <div class="section-head">
-        <div class="section-title">🎯 Today's Focus</div>
+        <div class="section-title"><i data-lucide="target" style="width:16px;height:16px;"></i> Today's Focus</div>
         <span style="font-size:11px;color:var(--tx-3)">${todayCount} done today</span>
       </div>
       <div class="card card-sm today-tasks-list">
         ${todayTasks.length
           ? todayTasks.map(renderTodayTask).join('')
           : `<div class="empty-state" style="padding:var(--s8);">
-               <div class="empty-state-icon">✅</div>
+               <div class="empty-state-icon"><i data-lucide="check-circle" style="width:48px;height:48px;opacity:0.3;"></i></div>
                <div class="empty-state-title">All caught up!</div>
              </div>`
         }
@@ -165,10 +161,9 @@ export function render(months) {
       </div>
     </div>
 
-    <!-- Skill breakdown -->
     <div>
       <div class="section-head">
-        <div class="section-title">📊 Skill Progress</div>
+        <div class="section-title"><i data-lucide="bar-chart-3" style="width:16px;height:16px;"></i> Skill Progress</div>
         <a href="#analytics" style="font-size:11px;color:var(--primary);">Full analytics →</a>
       </div>
       <div class="card card-sm">
@@ -177,11 +172,10 @@ export function render(months) {
     </div>
   </div>
 
-  <!-- Badges -->
   ${recentBadges.length ? `
   <div style="margin-bottom:var(--s5);">
     <div class="section-head">
-      <div class="section-title">🏅 Recent Badges</div>
+      <div class="section-title"><i data-lucide="award" style="width:16px;height:16px;"></i> Recent Badges</div>
       <span style="font-size:11px;color:var(--tx-3)">${s.badges.length} earned</span>
     </div>
     <div class="badges-row">
@@ -189,14 +183,13 @@ export function render(months) {
     </div>
   </div>` : ''}
 
-  <!-- Quick actions -->
-  <div class="section-head"><div class="section-title">⚡ Quick Actions</div></div>
+  <div class="section-head"><div class="section-title"><i data-lucide="zap" style="width:16px;height:16px;"></i> Quick Actions</div></div>
   <div class="quick-actions">
-    <a href="#focus"       class="btn btn-primary">🎯 Focus Mode</a>
-    <a href="#roadmap"     class="btn btn-secondary">🗺️ Roadmap</a>
-    <a href="#internships" class="btn btn-secondary">💼 Log Internship</a>
-    <a href="#interviews"  class="btn btn-secondary">🎤 Log Interview</a>
-    <a href="#heatmap"     class="btn btn-secondary">🔥 Heatmap</a>
+    <a href="#focus"       class="btn btn-primary"><i data-lucide="target"></i> Focus Mode</a>
+    <a href="#roadmap"     class="btn btn-secondary"><i data-lucide="map"></i> Roadmap</a>
+    <a href="#internships" class="btn btn-secondary"><i data-lucide="briefcase"></i> Log Internship</a>
+    <a href="#interviews"  class="btn btn-secondary"><i data-lucide="mic"></i> Log Interview</a>
+    <a href="#heatmap"     class="btn btn-secondary"><i data-lucide="calendar"></i> Heatmap</a>
   </div>
 
 </div>
@@ -235,7 +228,7 @@ export function mount(months) {
       if (n !== null && !isNaN(parseInt(n))) {
         const { setLeetcodeCount } = await import('../store.js');
         setLeetcodeCount(parseInt(n));
-        showToast(`LeetCode count updated: ${n}`, '💻');
+        showToast(`LeetCode count updated: ${n}`, 'terminal');
         const { navigate } = await import('../router.js');
         navigate('dashboard');
       }

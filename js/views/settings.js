@@ -8,11 +8,11 @@ export function render() {
   return `
 <div class="view-settings" style="max-width:600px;margin:0 auto;">
   <div class="page-header">
-    <div class="page-title">⚙️ Settings</div>
+    <div class="page-title"><i data-lucide="settings" style="width:24px;height:24px;margin-right:8px;vertical-align:text-bottom;"></i> Settings</div>
   </div>
 
   <div class="card" style="margin-bottom:var(--s4);">
-    <div class="section-head"><div class="section-title">Appearance</div></div>
+    <div class="section-head"><div class="section-title"><i data-lucide="eye" style="width:16px;height:16px;margin-right:8px;"></i> Appearance</div></div>
     <div class="toggle-wrap">
       <div class="toggle-info">
         <div class="toggle-title">Dark Mode</div>
@@ -26,34 +26,34 @@ export function render() {
   </div>
 
   <div class="card" id="install-card" style="margin-bottom:var(--s4); display:none;">
-    <div class="section-head"><div class="section-title">App Installation</div></div>
+    <div class="section-head"><div class="section-title"><i data-lucide="download" style="width:16px;height:16px;margin-right:8px;"></i> App Installation</div></div>
     <div style="display:flex; flex-direction:column; gap:var(--s2);">
       <p style="font-size:13px; opacity:0.7; margin-bottom:var(--s2);">Install Career OS on your home screen for fast, offline-first access.</p>
       <button class="btn btn-primary" onclick="window._installPwa()" style="justify-content:center; width:100%;">
-        📱 Install Career OS
+        <i data-lucide="smartphone" style="width:18px;height:18px;margin-right:8px;"></i> Install Career OS
       </button>
     </div>
   </div>
 
   <div class="card" style="margin-bottom:var(--s4);">
-    <div class="section-head"><div class="section-title">Data Management</div></div>
+    <div class="section-head"><div class="section-title"><i data-lucide="database" style="width:16px;height:16px;margin-right:8px;"></i> Data Management</div></div>
     
     <div style="display:flex;flex-direction:column;gap:var(--s3);">
       <button class="btn btn-secondary" onclick="window._export()" style="justify-content:center;">
-        📦 Export Backup (JSON)
+        <i data-lucide="download" style="width:18px;height:18px;margin-right:8px;"></i> Export Backup (JSON)
       </button>
       
       <div style="position:relative;">
         <input type="file" id="import-file" accept=".json" style="position:absolute;inset:0;opacity:0;cursor:pointer;" onchange="window._import(this)">
         <button class="btn btn-secondary" style="width:100%;justify-content:center;pointer-events:none;">
-          📥 Import Backup
+          <i data-lucide="upload" style="width:18px;height:18px;margin-right:8px;"></i> Import Backup
         </button>
       </div>
 
       <div class="divider"></div>
 
       <button class="btn btn-danger" onclick="window._reset()" style="justify-content:center;">
-        ⚠️ Reset All Progress
+        <i data-lucide="trash-2" style="width:18px;height:18px;margin-right:8px;"></i> Reset All Progress
       </button>
     </div>
   </div>

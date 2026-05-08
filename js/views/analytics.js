@@ -119,7 +119,7 @@ export function render(months) {
   return `
 <div class="view-analytics">
   <div class="page-header">
-    <div class="page-title">📈 Analytics</div>
+    <div class="page-title"><i data-lucide="trending-up" style="width:24px;height:24px;margin-right:8px;vertical-align:text-bottom;"></i> Analytics</div>
     <div class="page-subtitle">Track your consistency and skill distribution</div>
   </div>
 

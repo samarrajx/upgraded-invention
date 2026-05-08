@@ -60,4 +60,7 @@ async function _render(hash) {
   
   // Scroll to top
   window.scrollTo(0, 0);
+
+  // Initialize icons
+  if (window.lucide) lucide.createIcons();
 }

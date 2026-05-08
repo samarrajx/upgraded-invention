@@ -1,0 +1,1057 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Samar's 3-Year Roadmap — ₹20–30 LPA by 2028</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#f5f5f0;color:#1a1a1a;min-height:100vh;padding:1.25rem 1rem 4rem;}
+.container{max-width:740px;margin:0 auto;}
+.page-header{margin-bottom:1.5rem;padding-bottom:1rem;border-bottom:1px solid #e5e5e0;}
+.page-header h1{font-size:20px;font-weight:600;margin-bottom:4px;}
+.page-header p{font-size:13px;color:#666;line-height:1.5;}
+.rule-banner{background:#fff8e6;border:1px solid #f0d88a;border-radius:10px;padding:.75rem 1rem;margin-bottom:1.25rem;font-size:13px;color:#7a5a00;line-height:1.5;}
+.rule-banner strong{font-weight:600;}
+.top-bar{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.25rem;flex-wrap:wrap;gap:8px;}
+.stats{display:flex;gap:8px;flex-wrap:wrap;}
+.stat{background:#fff;border:1px solid #e5e5e0;border-radius:8px;padding:5px 12px;font-size:12px;color:#666;}
+.stat b{font-weight:600;color:#1a1a1a;}
+.reset-btn{font-size:12px;padding:5px 12px;cursor:pointer;border-radius:8px;border:1px solid #d0d0c8;background:transparent;color:#666;}
+.reset-btn:hover{background:#f0f0e8;}
+.skill-tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:1rem;}
+.tab{font-size:12px;font-weight:500;padding:4px 13px;border-radius:20px;border:1px solid #e0e0d8;cursor:pointer;background:#fff;color:#666;}
+.tab.active{color:#1a1a1a;border-color:#999;background:#f0f0e8;}
+.tab:hover{background:#f5f5f0;}
+.year-label{font-size:11px;font-weight:700;letter-spacing:.06em;color:#888;margin-bottom:.5rem;margin-top:1.25rem;padding-bottom:4px;border-bottom:1px solid #ebebeb;}
+.month-card{background:#fff;border:1px solid #e5e5e0;border-radius:12px;margin-bottom:.625rem;overflow:hidden;}
+.month-hdr{display:flex;align-items:center;gap:10px;padding:.8rem 1.125rem;cursor:pointer;user-select:none;}
+.month-hdr:hover{background:#fafaf8;}
+.mbadge{font-size:11px;font-weight:600;padding:2px 9px;border-radius:8px;white-space:nowrap;}
+.mtitle-wrap{flex:1;min-width:0;}
+.mtitle{font-size:13px;font-weight:600;color:#1a1a1a;}
+.sbadges{display:flex;flex-wrap:wrap;gap:3px;margin-top:3px;}
+.sbadge{font-size:10px;font-weight:600;padding:1px 6px;border-radius:8px;}
+.ptrack{height:3px;background:#ebebeb;border-radius:2px;margin-top:4px;overflow:hidden;}
+.pfill{height:100%;border-radius:2px;transition:width .3s;}
+.mprog{font-size:11px;color:#aaa;white-space:nowrap;margin-left:4px;}
+.chev{font-size:16px;color:#aaa;transition:transform .2s;line-height:1;}
+.mbody{display:none;padding:0 1.125rem .875rem;}
+.mbody.open{display:block;}
+.wlabel{font-size:11px;font-weight:700;letter-spacing:.04em;padding-top:10px;margin-bottom:5px;text-transform:uppercase;}
+.trow{display:flex;align-items:flex-start;gap:9px;padding:7px 5px;border-bottom:1px solid #f0f0e8;cursor:pointer;border-radius:6px;}
+.trow:last-child{border-bottom:none;}
+.trow:hover{background:#f8f8f4;}
+.cbox{width:17px;height:17px;min-width:17px;border-radius:4px;border:1.5px solid #ccc;display:flex;align-items:center;justify-content:center;margin-top:1px;font-size:11px;color:transparent;transition:all .15s;}
+.cbox.done{background:#16a34a;border-color:#16a34a;color:#fff;}
+.tinfo{flex:1;min-width:0;}
+.tname{font-size:13px;color:#1a1a1a;line-height:1.4;}
+.tname.done{text-decoration:line-through;color:#aaa;}
+.tsub{font-size:11px;color:#888;margin-top:2px;line-height:1.4;}
+.ttime{font-size:11px;color:#bbb;white-space:nowrap;padding-top:2px;}
+.win-box{background:#f8f8f4;border-radius:8px;padding:.625rem .875rem;margin-top:10px;font-size:12px;color:#555;line-height:1.5;border:1px solid #ebebeb;}
+.win-box strong{font-weight:600;color:#1a1a1a;}
+.rule-box{border:1px solid #f0d88a;background:#fff8e6;border-radius:8px;padding:.5rem .875rem;margin-top:8px;font-size:12px;color:#7a5a00;}
+@media(max-width:480px){
+  .month-hdr{padding:.75rem .875rem;}
+  .mbody{padding:0 .875rem .75rem;}
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="page-header">
+  <h1>Samar's 3-Year Roadmap to ₹20–30 LPA</h1>
+  <p>2025–2028 · Python from scratch → DSA → System design → Offer · Tap any task to check it off. Progress saves in this browser.</p>
+</div>
+
+<div class="rule-banner">
+  <strong>The one rule that determines everything:</strong> No AI to write your code during practice. Every line during learning must come from your own brain. AI assistance during actual work is fine — but not during the hours marked in this tracker.
+</div>
+
+<div class="top-bar">
+  <div class="stats">
+    <div class="stat">Done: <b id="dc">0</b> / <b id="tc">0</b></div>
+    <div class="stat">Target: <b>₹20–30 LPA</b></div>
+    <div class="stat">Deadline: <b>2028</b></div>
+  </div>
+  <button class="reset-btn" onclick="resetAll()">Reset all</button>
+</div>
+
+<div class="skill-tabs">
+  <button class="tab active" onclick="fs('all',this)">All</button>
+  <button class="tab" onclick="fs('python',this)">Python</button>
+  <button class="tab" onclick="fs('dsa',this)">DSA</button>
+  <button class="tab" onclick="fs('english',this)">English</button>
+  <button class="tab" onclick="fs('math',this)">Math</button>
+  <button class="tab" onclick="fs('system',this)">System design</button>
+  <button class="tab" onclick="fs('projects',this)">Projects</button>
+  <button class="tab" onclick="fs('interview',this)">Interview</button>
+</div>
+
+<div id="tracker"></div>
+
+</div>
+<script>
+const SC={
+  python: {bg:'#E6F1FB',txt:'#0C447C',prog:'#185FA5'},
+  dsa:    {bg:'#FAECE7',txt:'#712B13',prog:'#993C1D'},
+  english:{bg:'#E1F5EE',txt:'#085041',prog:'#0F6E56'},
+  math:   {bg:'#FAEEDA',txt:'#633806',prog:'#854F0B'},
+  system: {bg:'#EEEDFE',txt:'#3C3489',prog:'#534AB7'},
+  projects:{bg:'#EAF3DE',txt:'#27500A',prog:'#3B6D11'},
+  interview:{bg:'#FBEAF0',txt:'#72243E',prog:'#993556'},
+};
+
+const RULE='No AI to write your code during practice sessions.';
+
+const months=[
+  {id:'m1',badge:'Month 1',title:'Python from scratch + Math + English habits',color:'#E6F1FB',txt:'#0C447C',prog:'#185FA5',skills:['python','math','english'],weeks:[
+    {label:'Week 1 — Python: variables & logic',skill:'python',tasks:[
+      {t:'Install Python + VS Code. Run print("Samar") yourself.',s:'No AI. You type every character.',time:'45 min'},
+      {t:'Learn variables. Store your name, age, city. Print them.',s:'',time:'30 min'},
+      {t:'Learn if/elif/else. If marks>60 print pass else fail.',s:'',time:'30 min'},
+      {t:'Learn input(). Ask user for a number, print if odd or even.',s:'Think the logic first, then type.',time:'30 min'},
+      {t:'Write 5 small programs from your head. No copying.',s:'Grade checker, age calculator, anything.',time:'45 min'},
+    ]},
+    {label:'Week 2 — Python: loops',skill:'python',tasks:[
+      {t:'Learn for loops. Print 1 to 20 without typing each number.',s:'',time:'30 min'},
+      {t:'Learn while loops. Print numbers until user types 0.',s:'',time:'30 min'},
+      {t:'Use a loop to find the largest number in a list of 5. No max().',s:'Write the logic yourself.',time:'45 min'},
+      {t:'Print multiplication table of any number user enters.',s:'',time:'30 min'},
+      {t:'Count how many numbers in a list are above 50. No COUNTIF.',s:'Loop through. Check each. Count.',time:'30 min'},
+    ]},
+    {label:'Week 3 — Math: number sense',skill:'math',tasks:[
+      {t:'Khan Academy: whole numbers, fractions, percentages. Do all exercises.',s:'khanacademy.org — free.',time:'45 min'},
+      {t:'Learn what a variable means in algebra. Solve 5 equations by hand.',s:'x + 3 = 7. Find x. No calculator.',time:'30 min'},
+      {t:'Learn ratios and proportions. Solve 10 problems.',s:'',time:'30 min'},
+      {t:'Learn mean, median, mode. Calculate for 10 numbers by hand.',s:'',time:'30 min'},
+      {t:'Write a Python program that calculates mean and median. No library.',s:'Pure logic.',time:'45 min'},
+    ]},
+    {label:'Week 4 — English: daily habit starts',skill:'english',tasks:[
+      {t:'Watch one 10-min YouTube video in English daily. No subtitles.',s:'BBC Learning English channel.',time:'10 min'},
+      {t:'Write 5 sentences in English about your day. Every day this week.',s:'Think in English. Do not translate.',time:'10 min'},
+      {t:'Read one paragraph of any English tech article aloud.',s:'geeksforgeeks.org or any blog.',time:'10 min'},
+      {t:'Learn 5 new English words daily. Use each in a sentence.',s:'',time:'10 min'},
+      {t:'Record yourself speaking English for 1 minute. Listen back.',s:'Uncomfortable. Do it anyway.',time:'10 min'},
+    ]},
+  ],win:'You can write Python programs from scratch. Math and English habits started.',rule:RULE},
+
+  {id:'m2',badge:'Month 2',title:'Python functions + lists + DSA thinking begins',color:'#FAECE7',txt:'#712B13',prog:'#993C1D',skills:['python','dsa','english','math'],weeks:[
+    {label:'Week 5 — Python: functions & lists',skill:'python',tasks:[
+      {t:'Learn functions. Write a function that takes two numbers and returns sum.',s:'def add(a, b): return a + b',time:'30 min'},
+      {t:'Write a function that finds the largest number in a list. No max().',s:'',time:'45 min'},
+      {t:'Learn lists: add, remove, access by index, loop through.',s:'',time:'30 min'},
+      {t:'Write a function that removes duplicates from a list without set().',s:'Think how you would do it manually.',time:'45 min'},
+      {t:'Write a function that reverses a list without .reverse().',s:'',time:'30 min'},
+    ]},
+    {label:'Week 6 — Python: strings & dictionaries',skill:'python',tasks:[
+      {t:'Learn string operations: split, join, upper, lower, strip, replace.',s:'',time:'30 min'},
+      {t:'Count how many times each word appears in a sentence. No Counter.',s:'Use a dictionary.',time:'45 min'},
+      {t:'Store 5 agent names and their transaction counts in a dictionary.',s:'',time:'30 min'},
+      {t:'Write a function that finds the agent with highest transactions.',s:'',time:'30 min'},
+      {t:'Write a program that checks if a word is a palindrome.',s:'',time:'30 min'},
+    ]},
+    {label:'Week 7 — DSA: what it actually is',skill:'dsa',tasks:[
+      {t:'Understand what an array/list is in memory. Read before coding.',s:'geeksforgeeks.org/array-data-structure',time:'30 min'},
+      {t:'Implement linear search in Python from scratch.',s:'Loop through, check each element.',time:'30 min'},
+      {t:'Understand time complexity intuitively. Why 10,000 agents makes manual check slow.',s:'',time:'30 min'},
+      {t:'Implement binary search. Understand why list must be sorted first.',s:'',time:'45 min'},
+      {t:'Compare both searches. How many steps each takes on 100 items.',s:'',time:'30 min'},
+    ]},
+    {label:'Week 8 — Math + English',skill:'math',tasks:[
+      {t:'Khan Academy: intro to algebra unit. Complete all exercises.',s:'',time:'45 min'},
+      {t:'Learn what a function is in math (y = 2x + 1). Plot 5 points by hand.',s:'',time:'30 min'},
+      {t:'English: Speak for 2 minutes about what you learned this week. Record.',s:'',time:'15 min'},
+      {t:'English: Write a paragraph explaining linear search in English.',s:'',time:'15 min'},
+      {t:'Learn powers and logarithms basics. Why does log matter in DSA?',s:'',time:'30 min'},
+    ]},
+  ],win:'You can write functions, work with lists and dictionaries. You understand what DSA is.',rule:RULE},
+
+  {id:'m3',badge:'Month 3',title:'DSA seriously begins + Python files',color:'#EEEDFE',txt:'#3C3489',prog:'#534AB7',skills:['python','dsa','english','math'],weeks:[
+    {label:'Week 9 — Sorting algorithms',skill:'dsa',tasks:[
+      {t:'Trace bubble sort by hand on paper. Then code it.',s:'5 numbers. Sort manually first.',time:'45 min'},
+      {t:'Implement bubble sort in Python. No libraries.',s:'',time:'30 min'},
+      {t:'Trace selection sort by hand. Then code it.',s:'',time:'45 min'},
+      {t:'Trace insertion sort by hand. Then code it.',s:'',time:'45 min'},
+      {t:'Compare all three on 10 numbers. Count their steps.',s:'',time:'30 min'},
+    ]},
+    {label:'Week 10 — Python: files & error handling',skill:'python',tasks:[
+      {t:'Learn to read a .txt file line by line in Python.',s:'',time:'30 min'},
+      {t:'Learn to write output to a file.',s:'',time:'20 min'},
+      {t:'Learn try/except. Handle file not found error gracefully.',s:'',time:'30 min'},
+      {t:'Read a CSV manually (no pandas). Split by comma. Print each row.',s:'',time:'45 min'},
+      {t:'Read agent names + transactions from a file. Find top performer.',s:'',time:'45 min'},
+    ]},
+    {label:'Week 11 — Math: functions & graphs',skill:'math',tasks:[
+      {t:'Khan Academy: functions unit. Complete all exercises.',s:'',time:'45 min'},
+      {t:'Learn slope of a line. Calculate slope between 5 pairs of points.',s:'',time:'30 min'},
+      {t:'Understand O(n) and O(n²) using graph intuition. Draw both curves.',s:'',time:'30 min'},
+      {t:'Learn basic probability. If 3 of 10 agents fail, what is the probability?',s:'',time:'30 min'},
+      {t:'Simulate rolling a dice 1000 times in Python. Count each outcome.',s:'',time:'30 min'},
+    ]},
+    {label:'Week 12 — English push',skill:'english',tasks:[
+      {t:'Watch one English movie or show episode with English subtitles.',s:'English audio, English subs. Not Hindi dub.',time:'45 min'},
+      {t:'Summarize what you watched in 5 English sentences.',s:'',time:'15 min'},
+      {t:'Read one full English article from BBC. Understand every sentence.',s:'',time:'20 min'},
+      {t:'Explain sorting algorithms in English for 3 minutes. Record it.',s:'',time:'15 min'},
+      {t:'Write an email in English to an imaginary interviewer introducing yourself.',s:'',time:'20 min'},
+    ]},
+  ],win:'You can implement 3 sorting algorithms, read/write files, explain concepts in English.',rule:RULE},
+
+  {id:'m4',badge:'Month 4',title:'Stacks, queues, recursion + rebuild project 1',color:'#E1F5EE',txt:'#085041',prog:'#0F6E56',skills:['python','dsa','projects','english'],weeks:[
+    {label:'Week 13 — Stacks & queues',skill:'dsa',tasks:[
+      {t:'Understand a stack. Implement using a Python list.',s:'push = append, pop = pop.',time:'45 min'},
+      {t:'Solve: check if brackets are balanced using a stack.',s:'',time:'45 min'},
+      {t:'Understand a queue. Implement using a Python list.',s:'',time:'30 min'},
+      {t:'Stack vs queue: when to use each. Write real-life examples.',s:'',time:'20 min'},
+      {t:'Solve 2 Leetcode Easy problems using stack or queue.',s:'leetcode.com — filter by Stack, Easy.',time:'45 min'},
+    ]},
+    {label:'Week 14 — Recursion',skill:'dsa',tasks:[
+      {t:'Understand recursion with factorial. Trace the call stack on paper.',s:'Do not code until you can trace by hand.',time:'30 min'},
+      {t:'Implement factorial recursively. Then fibonacci.',s:'',time:'30 min'},
+      {t:'Understand the base case. Let it crash without one. See the error.',s:'',time:'20 min'},
+      {t:'Solve: reverse a string using recursion.',s:'',time:'30 min'},
+      {t:'Solve: power function using recursion. x to the power n.',s:'',time:'30 min'},
+    ]},
+    {label:'Week 15 — Rebuild project 1',skill:'projects',tasks:[
+      {t:'Open your Staff Attendance Manager. Read every file without AI.',s:'Understand what each file does. Take notes.',time:'60 min'},
+      {t:'Write in plain English what the authentication logic does.',s:'If you cannot explain it, you do not own it.',time:'30 min'},
+      {t:'Rebuild the user login from scratch in Python.',s:'Username + password stored in a file. Check it.',time:'60 min'},
+      {t:'Add a session concept manually: store logged-in user in a variable.',s:'',time:'30 min'},
+      {t:'Write a README for this rebuilt version in your own words.',s:'',time:'30 min'},
+    ]},
+    {label:'Week 16 — English: technical speaking',skill:'english',tasks:[
+      {t:'Explain recursion in English out loud for 2 minutes. Record it.',s:'',time:'15 min'},
+      {t:'Read one page of Clean Code in English. Summarize aloud.',s:'PDF available free online.',time:'20 min'},
+      {t:'Practice "Tell me about yourself" in English. 90 seconds.',s:'Prepare it. Practice 5 times.',time:'20 min'},
+      {t:'Write a LinkedIn post in English about what you built this month.',s:'Real post. Publish it.',time:'20 min'},
+      {t:'Find one English-speaking developer on Twitter/X. Read their content daily.',s:'',time:'5 min'},
+    ]},
+  ],win:'You understand recursion, stacks, queues. You partially own one of your projects.',rule:RULE},
+
+  {id:'m5',badge:'Month 5',title:'Linked lists + trees + SQL from scratch',color:'#FAEEDA',txt:'#633806',prog:'#854F0B',skills:['dsa','python','math'],weeks:[
+    {label:'Week 17 — Linked lists',skill:'dsa',tasks:[
+      {t:'Understand a linked list. Draw it on paper. Node has value + pointer.',s:'',time:'30 min'},
+      {t:'Implement a singly linked list: Node class + LinkedList class.',s:'insert, delete, print. No libraries.',time:'60 min'},
+      {t:'Traverse a linked list and find its length without .length.',s:'',time:'30 min'},
+      {t:'Reverse a linked list. Trace on paper first.',s:'',time:'45 min'},
+      {t:'Detect a cycle in a linked list. Understand Floyd\'s algorithm.',s:'',time:'30 min'},
+    ]},
+    {label:'Week 18 — Trees',skill:'dsa',tasks:[
+      {t:'Understand binary trees. Draw examples on paper.',s:'',time:'30 min'},
+      {t:'Implement a binary tree with insert and inorder traversal.',s:'',time:'60 min'},
+      {t:'Understand BFS vs DFS on a tree. Trace both by hand.',s:'',time:'45 min'},
+      {t:'Find the height of a binary tree using recursion.',s:'',time:'30 min'},
+      {t:'Solve 2 Leetcode Easy tree problems without AI.',s:'',time:'45 min'},
+    ]},
+    {label:'Week 19 — SQL from scratch',skill:'python',tasks:[
+      {t:'Use SQLite — it comes with Python. No extra install.',s:'',time:'15 min'},
+      {t:'Create a database with agents table: id, name, transactions.',s:'Write the SQL by hand.',time:'30 min'},
+      {t:'INSERT 10 rows. SELECT all. SELECT where transactions > 50.',s:'',time:'30 min'},
+      {t:'Write a JOIN between agents and transactions tables.',s:'',time:'45 min'},
+      {t:'Write GROUP BY query to find total transactions per agent.',s:'',time:'30 min'},
+    ]},
+    {label:'Week 20 — Math: statistics',skill:'math',tasks:[
+      {t:'Learn variance and standard deviation. Calculate by hand for 5 numbers.',s:'',time:'30 min'},
+      {t:'Learn what a normal distribution is intuitively.',s:'Khan Academy: statistics unit.',time:'30 min'},
+      {t:'Learn correlation. Does more training mean more transactions?',s:'',time:'30 min'},
+      {t:'Write Python: calculate standard deviation without any library.',s:'',time:'45 min'},
+      {t:'Learn basic probability: AND, OR, NOT. Solve 10 problems.',s:'',time:'30 min'},
+    ]},
+  ],win:'You understand linked lists, trees, and can write real SQL from scratch.',rule:RULE},
+
+  {id:'m6',badge:'Month 6',title:'Leetcode begins + rebuild project 2 + English',color:'#FBEAF0',txt:'#72243E',prog:'#993556',skills:['dsa','projects','english'],weeks:[
+    {label:'Week 21–22 — First 25 Leetcode Easy',skill:'dsa',tasks:[
+      {t:'Solve Leetcode #1 Two Sum. Think before coding.',s:'',time:'45 min'},
+      {t:'Solve Leetcode #9 Palindrome Number.',s:'',time:'30 min'},
+      {t:'Solve Leetcode #20 Valid Parentheses using stack.',s:'',time:'30 min'},
+      {t:'Solve Leetcode #53 Maximum Subarray.',s:'',time:'45 min'},
+      {t:'Solve 21 more Easy problems. Track every one in a notebook.',s:'Total: 25 Leetcode Easy by end of month.',time:''},
+    ]},
+    {label:'Week 23 — Rebuild project 2',skill:'projects',tasks:[
+      {t:'Open BC Performance System. Read the commission engine logic.',s:'Understand what each CSV column means.',time:'60 min'},
+      {t:'Rebuild the TDS 2% calculation in pure Python. No framework.',s:'Input: amount. Output: amount after TDS.',time:'30 min'},
+      {t:'Rebuild the CSV parser in Python without any library.',s:'Read file, split by comma, extract columns.',time:'60 min'},
+      {t:'Write unit tests for your TDS calculator. Handle edge cases.',s:'0, negative, string inputs.',time:'30 min'},
+      {t:'Document every function. Explain the why, not just the what.',s:'',time:'30 min'},
+    ]},
+    {label:'Week 24 — English interview prep',skill:'english',tasks:[
+      {t:'"Tell me about yourself" in English. 2 minutes. Record.',s:'',time:'15 min'},
+      {t:'"What is a linked list?" in English without notes.',s:'',time:'10 min'},
+      {t:'"Describe a project you built." Use BC Performance System.',s:'Speak slowly. Clearly.',time:'15 min'},
+      {t:'Write answers to 3 HR questions. Strength, weakness, why this company.',s:'',time:'20 min'},
+      {t:'Find a peer for a mock English conversation. Pramp.com is free.',s:'',time:'30 min'},
+    ]},
+  ],win:'25 Leetcode Easy solved. Two projects partially owned. English interview answers ready.',rule:RULE},
+
+  {id:'m7',badge:'Month 7',title:'Hashing + heaps + Python OOP',color:'#E6F1FB',txt:'#0C447C',prog:'#185FA5',skills:['dsa','python','english'],weeks:[
+    {label:'Week 25 — Hashing',skill:'dsa',tasks:[
+      {t:'Understand a hash table and why it is O(1) average lookup.',s:'',time:'30 min'},
+      {t:'Implement a basic hash map in Python from scratch. No dict.',s:'',time:'60 min'},
+      {t:'Solve Leetcode #242 Valid Anagram.',s:'',time:'30 min'},
+      {t:'Solve Leetcode #217 Contains Duplicate.',s:'',time:'20 min'},
+      {t:'Solve Leetcode #383 Ransom Note.',s:'',time:'20 min'},
+    ]},
+    {label:'Week 26 — Heaps',skill:'dsa',tasks:[
+      {t:'Understand min-heap vs max-heap.',s:'',time:'30 min'},
+      {t:'Use Python heapq module to find top 3 agents by transactions.',s:'',time:'30 min'},
+      {t:'Understand why heap gives O(log n) insert vs O(n) for sorted list.',s:'',time:'20 min'},
+      {t:'Solve Leetcode #703 Kth Largest Element in a Stream.',s:'',time:'45 min'},
+      {t:'Solve Leetcode #1046 Last Stone Weight.',s:'',time:'30 min'},
+    ]},
+    {label:'Week 27 — Python OOP',skill:'python',tasks:[
+      {t:'Learn classes. Create a BankAccount class with deposit and withdraw.',s:'',time:'45 min'},
+      {t:'Learn inheritance. SavingsAccount extends BankAccount.',s:'',time:'30 min'},
+      {t:'Understand encapsulation. Make balance private. Change via methods only.',s:'',time:'30 min'},
+      {t:'Rebuild your Agent class from BC System using proper OOP.',s:'',time:'45 min'},
+      {t:'Write a simple unittest for your Agent class.',s:'',time:'30 min'},
+    ]},
+    {label:'Week 28 — English',skill:'english',tasks:[
+      {t:'Speak English for 5 minutes every morning. Record daily.',s:'',time:'10 min'},
+      {t:'Watch one English developer conference talk on YouTube.',s:'Google I/O, PyCon, anything technical.',time:'30 min'},
+      {t:'Practice explaining OOP in English. Record 3-minute video.',s:'',time:'15 min'},
+      {t:'Write a cold email in English to a developer you respect.',s:'Do not have to send it. Just write it well.',time:'20 min'},
+      {t:'Read 2 pages of an English tech book daily.',s:'',time:'15 min'},
+    ]},
+  ],win:'You understand hashing, heaps, and can write OOP Python properly.',rule:RULE},
+
+  {id:'m8',badge:'Month 8',title:'Graphs + dynamic programming intro',color:'#FAECE7',txt:'#712B13',prog:'#993C1D',skills:['dsa','math','english'],weeks:[
+    {label:'Week 29 — Graphs basics',skill:'dsa',tasks:[
+      {t:'Understand nodes + edges. Directed vs undirected. Draw 5 real-life examples.',s:'',time:'30 min'},
+      {t:'Implement a graph using adjacency list in Python.',s:'',time:'45 min'},
+      {t:'Implement BFS on a graph.',s:'',time:'45 min'},
+      {t:'Implement DFS on a graph.',s:'',time:'30 min'},
+      {t:'Solve Leetcode #200 Number of Islands.',s:'',time:'45 min'},
+    ]},
+    {label:'Week 30 — Graphs continued',skill:'dsa',tasks:[
+      {t:'Solve Leetcode #133 Clone Graph.',s:'',time:'45 min'},
+      {t:'Solve Leetcode #207 Course Schedule. Detect cycle.',s:'',time:'60 min'},
+      {t:'Understand Dijkstra\'s shortest path algorithm conceptually.',s:'',time:'30 min'},
+      {t:'Write out BFS and DFS from memory without notes.',s:'If you cannot, practice more.',time:'30 min'},
+      {t:'Solve one more graph problem of your choice.',s:'',time:'45 min'},
+    ]},
+    {label:'Week 31 — Dynamic programming intro',skill:'dsa',tasks:[
+      {t:'Memoization: Fibonacci with memo vs without. Compare steps.',s:'',time:'45 min'},
+      {t:'Bottom-up DP: Fibonacci iteratively with a table.',s:'',time:'30 min'},
+      {t:'Solve Leetcode #70 Climbing Stairs using DP.',s:'',time:'30 min'},
+      {t:'Solve Leetcode #198 House Robber.',s:'',time:'45 min'},
+      {t:'Write the DP table for each problem by hand.',s:'If you cannot, you do not understand it.',time:''},
+    ]},
+    {label:'Week 32 — Math for interviews',skill:'math',tasks:[
+      {t:'Learn modular arithmetic.',s:'',time:'30 min'},
+      {t:'Learn bit manipulation basics: AND, OR, XOR, shifts.',s:'',time:'30 min'},
+      {t:'Solve Leetcode #191 Number of 1 Bits.',s:'',time:'20 min'},
+      {t:'Learn combinatorics: permutations and combinations.',s:'',time:'30 min'},
+      {t:'English: Explain dynamic programming out loud for 2 minutes.',s:'',time:'15 min'},
+    ]},
+  ],win:'You can solve graph problems and understand DP. These appear in every product company interview.',rule:RULE},
+
+  {id:'m9',badge:'Month 9',title:'50 Leetcode Easy done + rebuild project 3',color:'#EEEDFE',txt:'#3C3489',prog:'#534AB7',skills:['dsa','projects','english'],weeks:[
+    {label:'Week 33–34 — Leetcode sprint to 50',skill:'dsa',tasks:[
+      {t:'Solve 10 new Easy problems. Any topic. Track every problem.',s:'',time:'60 min/day'},
+      {t:'Write your thought process in English before coding each one.',s:'This trains interview communication.',time:'15 min/problem'},
+      {t:'Re-solve problems you struggled with. From memory.',s:'',time:'30 min'},
+      {t:'Time yourself. Aim for Easy problems in under 20 minutes.',s:'',time:''},
+      {t:'Milestone: 50 Leetcode Easy done. This is your foundation.',s:'',time:''},
+    ]},
+    {label:'Week 35 — Rebuild BC System core',skill:'projects',tasks:[
+      {t:'Rebuild the agent data model in Python using OOP.',s:'',time:'60 min'},
+      {t:'Rebuild the commission calculation logic in pure Python.',s:'No Supabase. No framework. Raw logic.',time:'60 min'},
+      {t:'Write a CSV importer: read agent data, create Agent objects.',s:'',time:'45 min'},
+      {t:'Write unit tests for commission calculation.',s:'',time:'30 min'},
+      {t:'Push Python version to GitHub with your own README.',s:'',time:'20 min'},
+    ]},
+    {label:'Week 36 — Communication + GitHub',skill:'english',tasks:[
+      {t:'Record a 5-minute video explaining your rebuilt BC system in English.',s:'Like a demo. Natural, not scripted.',time:'30 min'},
+      {t:'Write a detailed GitHub README in English. Problem, solution, what you learned.',s:'',time:'30 min'},
+      {t:'Answer mock interview questions on video: DSA + project + behavioral.',s:'',time:'30 min'},
+      {t:'Post a LinkedIn update about completing 50 Leetcode problems.',s:'Short, honest, in English.',time:'15 min'},
+      {t:'Read your README aloud. Does it sound professional?',s:'',time:'15 min'},
+    ]},
+  ],win:'50 Leetcode Easy done. BC System rebuilt in Python. You own it now.',rule:RULE},
+
+  {id:'m10',badge:'Month 10',title:'Leetcode Medium begins + system design intro',color:'#E1F5EE',txt:'#085041',prog:'#0F6E56',skills:['dsa','system','english'],weeks:[
+    {label:'Week 37–38 — Leetcode Medium: sliding window & two pointers',skill:'dsa',tasks:[
+      {t:'Learn sliding window. Solve #3 Longest Substring Without Repeating.',s:'',time:'60 min'},
+      {t:'Solve #424 Longest Repeating Character Replacement.',s:'',time:'45 min'},
+      {t:'Learn two pointer. Solve #167 Two Sum II.',s:'',time:'30 min'},
+      {t:'Solve #15 Three Sum.',s:'',time:'60 min'},
+      {t:'Solve #11 Container With Most Water.',s:'',time:'45 min'},
+    ]},
+    {label:'Week 39 — System design basics',skill:'system',tasks:[
+      {t:'What happens when you type google.com? Every step.',s:'',time:'30 min'},
+      {t:'Learn what a database index is. Why it speeds up queries.',s:'',time:'30 min'},
+      {t:'Learn what caching is. Redis concept. When would you use it?',s:'',time:'30 min'},
+      {t:'Learn what a REST API is from first principles.',s:'',time:'30 min'},
+      {t:'Draw your BC System architecture from memory. Label every component.',s:'',time:'30 min'},
+    ]},
+    {label:'Week 40 — English: technical interview',skill:'english',tasks:[
+      {t:'Do a full mock interview on Pramp.com in English.',s:'',time:'60 min'},
+      {t:'Practice explaining a Medium Leetcode solution in English clearly.',s:'',time:'20 min'},
+      {t:'Write answers to 10 behavioral questions in STAR format.',s:'',time:'30 min'},
+      {t:'Read answers aloud until they sound natural, not memorized.',s:'',time:'20 min'},
+      {t:'Record a mock system design explanation for your BC System.',s:'',time:'20 min'},
+    ]},
+  ],win:'You can solve Leetcode Medium problems. System design basics understood.',rule:''},
+
+  {id:'m11',badge:'Month 11',title:'100 Leetcode + open source contribution',color:'#FAEEDA',txt:'#633806',prog:'#854F0B',skills:['dsa','projects','interview'],weeks:[
+    {label:'Week 41–42 — Leetcode Medium sprint',skill:'dsa',tasks:[
+      {t:'Solve 10 more Medium problems. Focus on binary search and trees.',s:'',time:'60 min/day'},
+      {t:'Solve #98 Validate Binary Search Tree.',s:'',time:'45 min'},
+      {t:'Solve #102 Binary Tree Level Order Traversal.',s:'',time:'45 min'},
+      {t:'Solve #33 Search in Rotated Sorted Array.',s:'',time:'45 min'},
+      {t:'Milestone: 100 Leetcode problems. Most candidates stop at 30.',s:'',time:''},
+    ]},
+    {label:'Week 43 — Open source',skill:'projects',tasks:[
+      {t:'Find a small Python or JS project with "good first issue" label.',s:'',time:'30 min'},
+      {t:'Read the codebase. Understand it without AI.',s:'',time:'60 min'},
+      {t:'Fix one small bug or add one small feature.',s:'Even a documentation fix counts.',time:'60 min'},
+      {t:'Submit a pull request.',s:'',time:'20 min'},
+      {t:'Write about your contribution on LinkedIn in English.',s:'',time:'15 min'},
+    ]},
+    {label:'Week 44 — Mock interviews',skill:'interview',tasks:[
+      {t:'Do 2 full mock technical interviews on Pramp or Interviewing.io.',s:'',time:'60 min each'},
+      {t:'Write down every question you struggled with after each mock.',s:'',time:'20 min'},
+      {t:'Re-study every weak area identified.',s:'',time:'45 min'},
+      {t:'Research 10 companies you want to apply to. Understand their stack.',s:'',time:'30 min'},
+      {t:'Practice behavioral answers until natural in English.',s:'',time:'20 min'},
+    ]},
+  ],win:'100 Leetcode problems. First open source contribution. Mock interviews established.',rule:''},
+
+  {id:'m12',badge:'Month 12',title:'Year 1 complete — honest self-assessment',color:'#FBEAF0',txt:'#72243E',prog:'#993556',skills:['interview','english','projects'],weeks:[
+    {label:'Week 45–46 — Consolidation',skill:'dsa',tasks:[
+      {t:'Re-solve your 10 hardest Leetcode problems without looking at solutions.',s:'',time:'60 min'},
+      {t:'Write a cheat sheet of every DSA pattern you know.',s:'',time:'30 min'},
+      {t:'Identify your 3 weakest topics. Plan to fix them in Year 2.',s:'',time:'20 min'},
+      {t:'Review every project you rebuilt. Can you explain every line?',s:'',time:'60 min'},
+      {t:'Write honestly: what can you build from scratch without AI today?',s:'',time:'20 min'},
+    ]},
+    {label:'Week 47 — Resume + LinkedIn',skill:'interview',tasks:[
+      {t:'Rewrite your resume. Only include projects you can fully defend.',s:'Remove or downgrade AI-assisted ones.',time:'45 min'},
+      {t:'Add rebuilt Python projects prominently.',s:'',time:'20 min'},
+      {t:'Update LinkedIn with contributions, Leetcode progress, projects.',s:'',time:'20 min'},
+      {t:'Get a senior developer to review your resume.',s:'',time:'30 min'},
+      {t:'Write your personal pitch in English. 90 seconds. Memorize it.',s:'',time:'20 min'},
+    ]},
+    {label:'Week 48 — Year 1 review',skill:'english',tasks:[
+      {t:'Record 10-minute video in English: what you learned, what changed, what is next.',s:'No script. Speak freely.',time:'20 min'},
+      {t:'Do one final mock interview covering DSA + projects + behavioral.',s:'',time:'60 min'},
+      {t:'Write a LinkedIn post about your Year 1 journey. Honest and specific.',s:'',time:'20 min'},
+      {t:'Set Year 2 targets: Leetcode count, companies, internship applications.',s:'',time:'30 min'},
+      {t:'You are no longer starting from zero. You have a foundation.',s:'Year 2 is where you become dangerous.',time:''},
+    ]},
+  ],win:'Year 1 done. 100+ Leetcode. 3 rebuilt projects you own. English usable. Foundation real.',rule:''},
+
+  {id:'m13',badge:'Month 13',title:'Leetcode Medium depth + tries + intervals',color:'#FAECE7',txt:'#712B13',prog:'#993C1D',skills:['dsa','english'],weeks:[
+    {label:'Week 1 — Tries',skill:'dsa',tasks:[
+      {t:'Understand what a Trie is. Draw one for: cat, car, card.',s:'',time:'30 min'},
+      {t:'Implement a Trie: insert, search, startsWith. No libraries.',s:'',time:'60 min'},
+      {t:'Solve Leetcode #208 Implement Trie.',s:'',time:'45 min'},
+      {t:'Solve Leetcode #211 Design Add and Search Words.',s:'',time:'45 min'},
+      {t:'Solve Leetcode #212 Word Search II. Attempt even if not finished.',s:'',time:'60 min'},
+    ]},
+    {label:'Week 2 — Intervals',skill:'dsa',tasks:[
+      {t:'Understand merge intervals. Draw the pattern on paper first.',s:'',time:'30 min'},
+      {t:'Solve Leetcode #56 Merge Intervals.',s:'',time:'45 min'},
+      {t:'Solve Leetcode #57 Insert Interval.',s:'',time:'45 min'},
+      {t:'Solve Leetcode #252 Meeting Rooms.',s:'',time:'30 min'},
+      {t:'Solve Leetcode #253 Meeting Rooms II.',s:'',time:'45 min'},
+    ]},
+    {label:'Week 3 — DP patterns',skill:'dsa',tasks:[
+      {t:'Solve Leetcode #322 Coin Change. Trace the DP table by hand.',s:'',time:'60 min'},
+      {t:'Solve Leetcode #139 Word Break.',s:'',time:'45 min'},
+      {t:'Solve Leetcode #300 Longest Increasing Subsequence.',s:'',time:'45 min'},
+      {t:'Solve Leetcode #1143 Longest Common Subsequence.',s:'',time:'45 min'},
+      {t:'Write the DP table by hand for each problem.',s:'',time:'20 min each'},
+    ]},
+    {label:'Week 4 — English daily output',skill:'english',tasks:[
+      {t:'Speak English for 10 minutes every morning. No preparation.',s:'',time:'10 min'},
+      {t:'Write a technical blog post in English: explain one DSA concept.',s:'Publish on dev.to or Medium.',time:'45 min'},
+      {t:'Do one mock interview on Pramp entirely in English.',s:'',time:'60 min'},
+      {t:'Watch one English show episode without subtitles.',s:'',time:'30 min'},
+      {t:'Record yourself explaining Trie in English for 3 minutes.',s:'',time:'15 min'},
+    ]},
+  ],win:'You know tries, intervals, 4 DP patterns. 120+ Leetcode total.',rule:'When stuck for 30 min: read hint only. Not the full solution.'},
+
+  {id:'m14',badge:'Month 14',title:'System design fundamentals',color:'#EEEDFE',txt:'#3C3489',prog:'#534AB7',skills:['system','dsa','english'],weeks:[
+    {label:'Week 1 — How the internet works',skill:'system',tasks:[
+      {t:'Understand DNS. What happens between typing a URL and seeing a page.',s:'',time:'30 min'},
+      {t:'Understand TCP vs UDP. When would you use each?',s:'',time:'30 min'},
+      {t:'Understand HTTP vs HTTPS. What does TLS actually do?',s:'',time:'30 min'},
+      {t:'Understand what a load balancer does and why it exists.',s:'',time:'30 min'},
+      {t:'Draw the full request lifecycle of your BC System. Every hop.',s:'',time:'30 min'},
+    ]},
+    {label:'Week 2 — Databases at scale',skill:'system',tasks:[
+      {t:'Vertical vs horizontal scaling. When does each fail?',s:'',time:'30 min'},
+      {t:'Database indexing deeply. B-tree index. How it works internally.',s:'',time:'45 min'},
+      {t:'Sharding. What problem does it solve? What does it break?',s:'',time:'30 min'},
+      {t:'Replication. Primary-replica. What happens on primary failure?',s:'',time:'30 min'},
+      {t:'CAP theorem at a conceptual level.',s:'Real intuition. Not exam answer.',time:'30 min'},
+    ]},
+    {label:'Week 3 — Caching & queues',skill:'system',tasks:[
+      {t:'Redis and when to use a cache.',s:'',time:'30 min'},
+      {t:'Cache eviction policies: LRU, LFU.',s:'',time:'30 min'},
+      {t:'Solve Leetcode #146 LRU Cache from scratch.',s:'Classic system design coded problem.',time:'60 min'},
+      {t:'Message queues. What problem does Kafka solve?',s:'',time:'30 min'},
+      {t:'Async processing vs synchronous. Connect to your BC commission engine.',s:'',time:'20 min'},
+    ]},
+    {label:'Week 4 — Design a real system',skill:'system',tasks:[
+      {t:'Design a URL shortener. DB schema, API, caching, scale.',s:'',time:'60 min'},
+      {t:'Design a notification system for BC agents.',s:'Your domain. Use it.',time:'45 min'},
+      {t:'Read Grokking System Design ch 1–3. Free on GitHub.',s:'',time:'45 min'},
+      {t:'Explain your URL shortener design out loud for 5 minutes. Record.',s:'',time:'15 min'},
+      {t:'Watch one system design YouTube video. Take notes in English.',s:'Gaurav Sen or ByteByteGo.',time:'30 min'},
+    ]},
+  ],win:'You can discuss system design in an interview without freezing.',rule:''},
+
+  {id:'m15',badge:'Month 15',title:'Advanced graphs + DP + 150 Leetcode milestone',color:'#E1F5EE',txt:'#085041',prog:'#0F6E56',skills:['dsa','english'],weeks:[
+    {label:'Week 1 — Advanced graphs',skill:'dsa',tasks:[
+      {t:'Topological sort. Implement using DFS and Kahn\'s algorithm.',s:'',time:'60 min'},
+      {t:'Solve Leetcode #207 Course Schedule.',s:'',time:'45 min'},
+      {t:'Solve Leetcode #210 Course Schedule II.',s:'',time:'45 min'},
+      {t:'Implement Dijkstra\'s algorithm fully.',s:'',time:'60 min'},
+      {t:'Solve Leetcode #743 Network Delay Time.',s:'',time:'45 min'},
+    ]},
+    {label:'Week 2 — Advanced DP',skill:'dsa',tasks:[
+      {t:'2D DP. Solve Leetcode #62 Unique Paths.',s:'',time:'45 min'},
+      {t:'Solve Leetcode #64 Minimum Path Sum.',s:'',time:'30 min'},
+      {t:'Solve Leetcode #72 Edit Distance.',s:'',time:'60 min'},
+      {t:'Solve Leetcode #312 Burst Balloons.',s:'',time:'60 min'},
+      {t:'Write DP table by hand for each problem before coding.',s:'',time:''},
+    ]},
+    {label:'Week 3 — Leetcode sprint to 150',skill:'dsa',tasks:[
+      {t:'Solve 10 mixed Medium problems. Time yourself at 25 min each.',s:'',time:''},
+      {t:'Review every category. Which are still slow?',s:'',time:'30 min'},
+      {t:'Focus 2 days on your weakest category.',s:'',time:'60 min/day'},
+      {t:'Milestone: 150 Leetcode problems solved.',s:'',time:''},
+      {t:'Write your pattern sheet. One page. Every pattern you know.',s:'',time:'30 min'},
+    ]},
+    {label:'Week 4 — Communication upgrade',skill:'english',tasks:[
+      {t:'Do 2 mock interviews this week. Both in English. Both on video.',s:'',time:'60 min each'},
+      {t:'Write a second technical blog post in English.',s:'',time:'45 min'},
+      {t:'Speak English for 15 minutes continuously every morning.',s:'',time:'15 min'},
+      {t:'Watch one English developer podcast. Take 5 notes.',s:'',time:'30 min'},
+      {t:'Read your blog post aloud. Fix what sounds unnatural.',s:'',time:'15 min'},
+    ]},
+  ],win:'150 Leetcode problems. Advanced graph and DP patterns. Two blog posts published.',rule:''},
+
+  {id:'m16',badge:'Month 16',title:'Backend from scratch — own your stack',color:'#FAEEDA',txt:'#633806',prog:'#854F0B',skills:['python','projects','system'],weeks:[
+    {label:'Week 1 — HTTP & APIs from scratch',skill:'python',tasks:[
+      {t:'Understand HTTP request/response at raw level. Method, headers, body, status.',s:'',time:'30 min'},
+      {t:'Build a simple HTTP server in Python using only socket library.',s:'No Flask. Raw sockets.',time:'60 min'},
+      {t:'Add routing: /agents returns list, /agents/1 returns one agent.',s:'',time:'45 min'},
+      {t:'Add POST handler: accept JSON, parse it, save to a file.',s:'',time:'45 min'},
+      {t:'Rebuild it in Flask. See how much it simplifies. Understand why.',s:'',time:'30 min'},
+    ]},
+    {label:'Week 2 — Database layer from scratch',skill:'python',tasks:[
+      {t:'Build a SQLite database layer in Python without an ORM.',s:'Raw SQL.',time:'45 min'},
+      {t:'Add CRUD: create agent, read agent, update transactions, delete agent.',s:'',time:'45 min'},
+      {t:'Add error handling: what if agent does not exist? DB locked?',s:'',time:'30 min'},
+      {t:'Write 10 integration tests for your CRUD operations.',s:'',time:'30 min'},
+      {t:'Add a simple connection concept manually.',s:'',time:'30 min'},
+    ]},
+    {label:'Week 3 — Auth from scratch',skill:'python',tasks:[
+      {t:'Implement user registration: hash password with hashlib.',s:'Understand SHA-256 first.',time:'45 min'},
+      {t:'Implement login: compare hashed passwords. Return session token.',s:'',time:'45 min'},
+      {t:'Understand JWT. Build a simple JWT manually.',s:'Header.Payload.Signature — build each part.',time:'60 min'},
+      {t:'Add auth middleware: reject requests without valid token.',s:'',time:'30 min'},
+      {t:'Look at your original Supabase auth. Do you understand what it was doing?',s:'',time:'30 min'},
+    ]},
+    {label:'Week 4 — Rebuild BC System backend',skill:'projects',tasks:[
+      {t:'Rebuild BC Performance System backend: Python + Flask + SQLite.',s:'No Supabase. No Next.js.',time:'90 min'},
+      {t:'Implement: agent CRUD, commission calculation, CSV import endpoint.',s:'',time:'90 min'},
+      {t:'Write 20 tests covering all endpoints.',s:'',time:'45 min'},
+      {t:'Deploy on Render for free.',s:'',time:'30 min'},
+      {t:'Push to GitHub with a README you can defend line by line.',s:'',time:'30 min'},
+    ]},
+  ],win:'You built a backend from scratch. Auth, database, APIs. All yours. No framework magic.',rule:'Every line of code must be written by you. If you do not understand a line, delete and rewrite.'},
+
+  {id:'m17',badge:'Month 17',title:'Internship applications begin + mock marathon',color:'#FBEAF0',txt:'#72243E',prog:'#993556',skills:['interview','english','dsa'],weeks:[
+    {label:'Week 1 — Application prep',skill:'interview',tasks:[
+      {t:'Rewrite resume. Lead with rebuilt projects. Remove what you cannot defend.',s:'',time:'45 min'},
+      {t:'Write a cover letter template. Personalize for 3 target companies.',s:'',time:'45 min'},
+      {t:'Research 20 companies hiring interns/juniors with your stack.',s:'FinTech, startups, product companies in India.',time:'45 min'},
+      {t:'Shortlist 5. Check their interview process on Glassdoor and Reddit.',s:'',time:'30 min'},
+      {t:'Send 5 cold emails to engineers at target companies asking for referral.',s:'Short, honest, specific.',time:'30 min'},
+    ]},
+    {label:'Week 2 — Mock interview marathon',skill:'interview',tasks:[
+      {t:'Do 4 mock interviews this week. 2 technical, 2 behavioral.',s:'',time:'60 min each'},
+      {t:'After each interview: write down every question asked.',s:'',time:'10 min'},
+      {t:'For every question you stumbled on: study and re-answer it.',s:'',time:'30 min per question'},
+      {t:'Practice explaining your BC System rebuild in under 3 minutes.',s:'',time:'20 min'},
+      {t:'Practice one full system design interview from start to finish.',s:'',time:'45 min'},
+    ]},
+    {label:'Week 3 — Apply and follow up',skill:'interview',tasks:[
+      {t:'Submit 5 applications. Real, targeted ones.',s:'',time:'30 min each'},
+      {t:'Follow up on cold emails after 5 days. One follow up only.',s:'',time:'15 min'},
+      {t:'Search LinkedIn, Internshala, Wellfound for listings.',s:'',time:'30 min'},
+      {t:'Apply to 3 remote positions on Wellfound.',s:'',time:'30 min each'},
+      {t:'Track every application: company, role, date, status.',s:'',time:'10 min'},
+    ]},
+    {label:'Week 4 — Leetcode + system design review',skill:'dsa',tasks:[
+      {t:'Solve 5 Medium problems you have not seen. No hints.',s:'',time:''},
+      {t:'Design a rate limiter. Token bucket or leaky bucket algorithm.',s:'',time:'45 min'},
+      {t:'Design the BC Performance System as a system design question.',s:'Ask yourself hard questions.',time:'45 min'},
+      {t:'Do a 45-minute mock system design interview in English.',s:'',time:'45 min'},
+      {t:'Review your pattern sheet. Anything missing?',s:'',time:'20 min'},
+    ]},
+  ],win:'5+ applications sent. Mock interview process established. System design interview-ready.',rule:''},
+
+  {id:'m18',badge:'Month 18',title:'Year 2 mid-point — honest check',color:'#E6F1FB',txt:'#0C447C',prog:'#185FA5',skills:['dsa','projects','english','interview'],weeks:[
+    {label:'Week 1 — DSA self-test',skill:'dsa',tasks:[
+      {t:'Solve 5 random Medium problems in 2 hours. No notes, no AI.',s:'Interview conditions.',time:'2 hrs'},
+      {t:'Solve one Hard problem. Attempt fully.',s:'It is okay to not finish.',time:'60 min'},
+      {t:'Re-solve your 5 hardest previous problems from memory.',s:'',time:''},
+      {t:'Identify gaps: which topics still feel shaky?',s:'',time:'20 min'},
+      {t:'Make a targeted 2-week plan to fix the gaps.',s:'',time:'20 min'},
+    ]},
+    {label:'Week 2 — Project ownership test',skill:'projects',tasks:[
+      {t:'Open your Flask backend. Can you explain every file without looking it up?',s:'',time:'30 min'},
+      {t:'"How does your authentication work?" Explain in English for 3 minutes.',s:'',time:'15 min'},
+      {t:'"How would you scale this to 10,000 agents?" Answer it.',s:'',time:'20 min'},
+      {t:'Write 10 technical questions an interviewer could ask about your project.',s:'',time:'20 min'},
+      {t:'Answer all 10 out loud in English. Record yourself.',s:'',time:'30 min'},
+    ]},
+    {label:'Week 3 — English milestone',skill:'english',tasks:[
+      {t:'Have a 30-minute conversation in English. Do not switch to Hindi.',s:'',time:'30 min'},
+      {t:'Write a 500-word essay in English: why you want to work in FinTech.',s:'No AI writing. Your words.',time:'30 min'},
+      {t:'Read it back. Does it sound like you? Fix what sounds translated.',s:'',time:'15 min'},
+      {t:'Do a mock interview entirely in English. Ask for language feedback.',s:'',time:'60 min'},
+      {t:'Note every word that felt awkward. Practice those specifically.',s:'',time:'15 min'},
+    ]},
+    {label:'Week 4 — Adjust based on reality',skill:'interview',tasks:[
+      {t:'Review your application tracker. What happened with your applications?',s:'',time:'20 min'},
+      {t:'If you got interviews: prepare specifically for each company.',s:'',time:''},
+      {t:'If rejected: is it resume, DSA, or communication? Get specific.',s:'',time:'20 min'},
+      {t:'Update your resume based on what interviewers actually asked.',s:'',time:'30 min'},
+      {t:'Send 5 more applications with updated resume.',s:'',time:''},
+    ]},
+  ],win:'Honest mid-point. You know exactly where you stand. Plan adjusted based on reality.',rule:''},
+
+  {id:'m19',badge:'Month 19',title:'200 Leetcode + real open source contribution',color:'#FAECE7',txt:'#712B13',prog:'#993C1D',skills:['dsa','projects','english'],weeks:[
+    {label:'Week 1–2 — Leetcode sprint to 200',skill:'dsa',tasks:[
+      {t:'Solve 25 problems this fortnight. Mix of Medium and Hard attempts.',s:'',time:'2 hrs/day'},
+      {t:'Milestone: 200 Leetcode. Top 15% of candidates.',s:'',time:''},
+      {t:'For every Hard attempted: write what you understood even if unfinished.',s:'',time:'15 min each'},
+      {t:'Re-solve 10 problems from Month 13 from scratch. Speed test.',s:'',time:''},
+      {t:'Build your blind spots list: what topics are still slow?',s:'',time:'20 min'},
+    ]},
+    {label:'Week 3 — Open source: real contribution',skill:'projects',tasks:[
+      {t:'Find a Python or FinTech open source project with active maintainers.',s:'"good first issue" "help wanted" on GitHub.',time:'30 min'},
+      {t:'Read the entire codebase. Understand the architecture first.',s:'',time:'90 min'},
+      {t:'Fix a real bug or implement a small requested feature.',s:'Not documentation. Actual code.',time:'90 min'},
+      {t:'Submit PR. Respond to reviewer feedback in English professionally.',s:'',time:''},
+      {t:'Get the PR merged. Add it to resume and LinkedIn.',s:'A merged PR beats 3 certificates.',time:''},
+    ]},
+    {label:'Week 4 — English professional writing',skill:'english',tasks:[
+      {t:'Write 3 technical blog posts this month total. Each on different topic.',s:'Publish all on dev.to or your site.',time:'45 min each'},
+      {t:'Email a maintainer asking a technical question. Professional English.',s:'',time:'20 min'},
+      {t:'Practice whiteboard communication: talk through a problem as you solve it.',s:'Record. Fill silence with thinking out loud.',time:'30 min'},
+      {t:'Read one engineering blog from Stripe, Cloudflare, or Notion. Summarize it.',s:'',time:'30 min'},
+      {t:'Rate your English honestly 1–10.',s:'',time:'10 min'},
+    ]},
+  ],win:'200 Leetcode. One merged open source PR. 3 published technical blog posts.',rule:''},
+
+  {id:'m20',badge:'Month 20',title:'System design advanced + design your own systems',color:'#EEEDFE',txt:'#3C3489',prog:'#534AB7',skills:['system','projects','english'],weeks:[
+    {label:'Week 1 — Design at scale',skill:'system',tasks:[
+      {t:'Design Twitter/X timeline. Write it out with all components.',s:'Then read how Twitter actually does it.',time:'60 min'},
+      {t:'Design a payment system like Razorpay. Your domain.',s:'Idempotency, retries, reconciliation.',time:'60 min'},
+      {t:'Design a fraud detection system for BC transactions.',s:'Use your domain advantage hard here.',time:'45 min'},
+      {t:'Understand consistent hashing. When is it used?',s:'',time:'30 min'},
+      {t:'Understand event-driven architecture: publisher, subscriber, broker.',s:'',time:'30 min'},
+    ]},
+    {label:'Week 2 — BC System at production scale',skill:'projects',tasks:[
+      {t:'Redesign BC Performance System to handle 100,000 agents.',s:'What breaks first? Fix each thing.',time:'60 min'},
+      {t:'Add a caching layer design. What gets cached? For how long?',s:'',time:'30 min'},
+      {t:'Add a job queue design for commission processing.',s:'Why async is better here.',time:'30 min'},
+      {t:'Write the full architecture diagram. Every component labeled.',s:'',time:'30 min'},
+      {t:'Present this design out loud in English for 8 minutes as if in an interview.',s:'',time:'20 min'},
+    ]},
+    {label:'Week 3 — Docker basics',skill:'system',tasks:[
+      {t:'Understand microservices vs monolith. When does each make sense?',s:'',time:'30 min'},
+      {t:'Understand Docker. What problem does it solve?',s:'',time:'30 min'},
+      {t:'Run your Flask app inside a Docker container.',s:'Write the Dockerfile yourself. Understand each line.',time:'45 min'},
+      {t:'Understand Kubernetes at a high level. Not operating — just what it is.',s:'',time:'20 min'},
+      {t:'Read one engineering blog about a microservices migration.',s:'',time:'30 min'},
+    ]},
+    {label:'Week 4 — Applications push',skill:'english',tasks:[
+      {t:'Do a full system design mock interview in English. 45 minutes.',s:'',time:'45 min'},
+      {t:'Send 10 applications this week.',s:'',time:''},
+      {t:'Attend one online tech meetup or webinar in English.',s:'Meetup.com or Eventbrite.',time:'60 min'},
+      {t:'Connect with 5 engineers on LinkedIn. Personalized notes in English.',s:'',time:'20 min'},
+      {t:'Follow up on all pending applications.',s:'',time:'15 min'},
+    ]},
+  ],win:'You can design production systems. Docker running. BC System scalable on paper.',rule:''},
+
+  {id:'m21',badge:'Month 21',title:'Company-specific prep + Leetcode Hard begins',color:'#E1F5EE',txt:'#085041',prog:'#0F6E56',skills:['dsa','interview','english'],weeks:[
+    {label:'Week 1 — First Leetcode Hard problems',skill:'dsa',tasks:[
+      {t:'Solve Leetcode #23 Merge K Sorted Lists.',s:'',time:'90 min'},
+      {t:'Solve Leetcode #297 Serialize and Deserialize Binary Tree.',s:'',time:'60 min'},
+      {t:'Solve Leetcode #124 Binary Tree Maximum Path Sum.',s:'',time:'60 min'},
+      {t:'After each Hard: write what pattern it used. Why was it hard?',s:'',time:'15 min each'},
+      {t:'Attempt 2 more Hard problems.',s:'Fine to not finish. The attempt trains thinking.',time:'60 min each'},
+    ]},
+    {label:'Week 2 — Target company research',skill:'interview',tasks:[
+      {t:'Pick your top 3 target companies. Research their exact interview format.',s:'',time:'60 min each'},
+      {t:'For each: what DSA topics do they focus on?',s:'',time:'20 min'},
+      {t:'For each: what system design level do they expect from juniors?',s:'',time:'20 min'},
+      {t:'Solve 10 problems tagged with each target company on Leetcode.',s:'',time:''},
+      {t:'Write a preparation checklist per company.',s:'',time:'20 min'},
+    ]},
+    {label:'Week 3 — Behavioral interview mastery',skill:'interview',tasks:[
+      {t:'Write STAR answers: biggest challenge, failure, conflict, achievement.',s:'In English. Each 2–3 minutes.',time:'30 min each'},
+      {t:'Practice all 4 until they sound natural. Not memorized.',s:'',time:''},
+      {t:'Research target company values. Align your answers.',s:'',time:'20 min each'},
+      {t:'Do a full behavioral mock interview. 45 minutes. In English.',s:'',time:'45 min'},
+      {t:'Get feedback specifically on: clarity, structure, confidence.',s:'',time:''},
+    ]},
+    {label:'Week 4 — English fluency check',skill:'english',tasks:[
+      {t:'Hold a 20-minute technical conversation in English with a peer. Cold.',s:'',time:'20 min'},
+      {t:'If you still switch to Hindi mid-sentence: English is your primary focus now.',s:'',time:''},
+      {t:'Listen to one English podcast at 1.5x speed. Take notes.',s:'',time:'30 min'},
+      {t:'Write a LinkedIn post about your open source contribution.',s:'',time:'15 min'},
+      {t:'Can you hold a 45-minute technical interview in English now? Rate yourself.',s:'',time:'10 min'},
+    ]},
+  ],win:'First Hard problems solved. Target companies researched. Behavioral answers ready.',rule:''},
+
+  {id:'m22',badge:'Month 22',title:'Interview simulation month',color:'#FAEEDA',txt:'#633806',prog:'#854F0B',skills:['interview','dsa','english'],weeks:[
+    {label:'Week 1–2 — Full interview simulations',skill:'interview',tasks:[
+      {t:'Do 8 full mock interviews this fortnight. 4 technical + 4 behavioral.',s:'As close to real conditions as possible.',time:'60 min each'},
+      {t:'Each technical mock: 2 Leetcode problems in 45 minutes.',s:'',time:''},
+      {t:'Each behavioral: full STAR answers, English, video on.',s:'',time:''},
+      {t:'Grade yourself after each. Honest score 1–10 on speed, communication, correctness.',s:'',time:'10 min'},
+      {t:'Fix the lowest-scoring area before the next mock.',s:'',time:''},
+    ]},
+    {label:'Week 3 — Weak areas only',skill:'dsa',tasks:[
+      {t:'From mock feedback: identify 2 weakest DSA topics.',s:'',time:'20 min'},
+      {t:'Solve 10 problems in each weak topic. Nothing else this week.',s:'',time:''},
+      {t:'Re-do a full system design on your weakest design topic.',s:'',time:'45 min'},
+      {t:'Do 2 more mocks after fixing weak areas.',s:'',time:'60 min each'},
+      {t:'Measure improvement. Is the score higher?',s:'',time:''},
+    ]},
+    {label:'Week 4 — Applications push',skill:'interview',tasks:[
+      {t:'Send 15 applications this week. Junior dev, FinTech, backend roles.',s:'',time:''},
+      {t:'Apply to 5 remote roles on Wellfound, Remote.co, We Work Remotely.',s:'',time:''},
+      {t:'Ask network for referrals. One honest message each.',s:'',time:''},
+      {t:'Update LinkedIn to show open to work. Proper headline.',s:'',time:'15 min'},
+      {t:'Track all applications. Follow up on anything over 10 days old.',s:'',time:''},
+    ]},
+  ],win:'8+ mock interviews done. 15+ applications sent. Weaknesses known and addressed.',rule:''},
+
+  {id:'m23',badge:'Month 23',title:'Real interviews incoming — stay sharp',color:'#FBEAF0',txt:'#72243E',prog:'#993556',skills:['interview','dsa','english'],weeks:[
+    {label:'Week 1 — Pre-interview routine',skill:'interview',tasks:[
+      {t:'Build a daily warm-up: 1 Easy + 1 Medium every morning.',s:'Like a musician warming up.',time:'45 min'},
+      {t:'Review STAR answers. Do they still feel natural?',s:'',time:'20 min'},
+      {t:'Review system design diagrams. Can you draw them from memory?',s:'',time:'20 min'},
+      {t:'Research every company before their interview. Know their product.',s:'',time:'45 min per company'},
+      {t:'Prepare 5 questions to ask the interviewer. In English.',s:'Smart questions signal smart candidates.',time:'20 min'},
+    ]},
+    {label:'Week 2 — During real interviews',skill:'interview',tasks:[
+      {t:'When stuck: say "Let me think through this out loud."',s:'Silence is worse than imperfect thinking.',time:''},
+      {t:'When you do not know: "I haven\'t worked with X but here is my approach."',s:'Honesty + reasoning beats bluffing.',time:''},
+      {t:'Always clarify the problem before coding. Ask 2–3 questions.',s:'',time:''},
+      {t:'After every real interview: write every question asked within 1 hour.',s:'Memory fades fast.',time:'20 min'},
+      {t:'Study every question from every real interview.',s:'',time:''},
+    ]},
+    {label:'Week 3 — Keep solving',skill:'dsa',tasks:[
+      {t:'Do not stop Leetcode during application season. 1 problem minimum per day.',s:'',time:'30 min'},
+      {t:'Solve 5 company-tagged problems for each upcoming interview.',s:'',time:''},
+      {t:'Revisit pattern sheet. Add anything new.',s:'',time:'20 min'},
+      {t:'Solve 2 Hard problems this week.',s:'',time:'60 min each'},
+      {t:'English: do one mock interview at 8 AM cold — no warm-up.',s:'Real interviews are cold.',time:'60 min'},
+    ]},
+    {label:'Week 4 — Negotiate',skill:'english',tasks:[
+      {t:'Research market salaries for your target roles. Glassdoor, Levels.fyi.',s:'',time:'30 min'},
+      {t:'Know your number: minimum and target.',s:'',time:'10 min'},
+      {t:'Practice saying "I was expecting closer to X based on market research."',s:'Say it until it does not feel uncomfortable.',time:'15 min'},
+      {t:'Never accept the first number if below your research.',s:'Silence after an offer is not rude. It is strategy.',time:''},
+      {t:'Write a negotiation script. Practice it out loud.',s:'',time:'20 min'},
+    ]},
+  ],win:'You are interviewing for real. You have a routine. You know how to negotiate.',rule:''},
+
+  {id:'m24',badge:'Month 24',title:'Year 2 complete — evaluate honestly',color:'#E6F1FB',txt:'#0C447C',prog:'#185FA5',skills:['interview','english','projects'],weeks:[
+    {label:'Week 1 — Audit everything',skill:'interview',tasks:[
+      {t:'How many real interviews did you get? How many offers? Write the number.',s:'No rounding up.',time:'10 min'},
+      {t:'If zero offers: is it DSA, system design, communication, or wrong companies?',s:'',time:'30 min'},
+      {t:'If at least one offer: is it ₹20-30 LPA? What is the gap?',s:'',time:'20 min'},
+      {t:'What is your honest English level now 1–10?',s:'',time:'10 min'},
+      {t:'What Leetcode problems can you solve under 20 minutes?',s:'',time:''},
+    ]},
+    {label:'Week 2 — Year 3 planning',skill:'interview',tasks:[
+      {t:'Set 3 specific targets for Year 3 based on your audit.',s:'Example: 250 Leetcode, 3 Hard/week, offer by Month 30.',time:'30 min'},
+      {t:'Identify your top 10 companies for Year 3.',s:'',time:'20 min'},
+      {t:'Decide: internship first or straight to full-time junior?',s:'Be honest about where your skills are.',time:'20 min'},
+      {t:'Update resume and LinkedIn with everything from Year 2.',s:'',time:'30 min'},
+      {t:'Write your Year 3 daily schedule. Commit to it.',s:'',time:'20 min'},
+    ]},
+    {label:'Week 3–4 — Rest and reset',skill:'english',tasks:[
+      {t:'Take 3 days off from DSA. Your brain needs it.',s:'This is not laziness. It is maintenance.',time:''},
+      {t:'Do one non-technical thing in English: novel, film, conversation.',s:'',time:''},
+      {t:'Write a journal entry in English: what changed in you over 2 years.',s:'Honest. Not for anyone else.',time:'20 min'},
+      {t:'Come back refreshed. Year 3 is the finish line.',s:'',time:''},
+      {t:'You have been building for 2 years. Most people never start.',s:'',time:''},
+    ]},
+  ],win:'Year 2 done. Honest audit complete. Year 3 plan set. You know exactly what the gap is.',rule:''},
+
+  {id:'m25',badge:'Month 25',title:'Year 3 begins — sharpen everything',color:'#FAECE7',txt:'#712B13',prog:'#993C1D',skills:['dsa','system','english'],weeks:[
+    {label:'Week 1 — Leetcode Hard focus',skill:'dsa',tasks:[
+      {t:'3 Hard problems per week from now. This is your new baseline.',s:'If cannot solve: read editorial, understand, re-solve.',time:'90 min each'},
+      {t:'Solve Leetcode #410 Split Array Largest Sum.',s:'',time:'60 min'},
+      {t:'Solve Leetcode #42 Trapping Rain Water.',s:'',time:'60 min'},
+      {t:'Solve Leetcode #84 Largest Rectangle in Histogram.',s:'',time:'60 min'},
+      {t:'Review every Hard pattern. What makes it Hard vs Medium?',s:'',time:'20 min'},
+    ]},
+    {label:'Week 2 — Advanced system design',skill:'system',tasks:[
+      {t:'Design Google Drive. Full write-out. File storage, metadata, sharing, sync.',s:'',time:'60 min'},
+      {t:'Design a real-time chat system. WebSockets, presence, delivery receipts.',s:'',time:'60 min'},
+      {t:'Design next version of BC System at 1 million agents.',s:'Your domain advantage. Use it hard.',time:'60 min'},
+      {t:'Do a system design mock interview for each design above.',s:'',time:'45 min each'},
+      {t:'Read ByteByteGo newsletter or book. One chapter per week.',s:'',time:'30 min'},
+    ]},
+    {label:'Week 3–4 — English: near-native goal',skill:'english',tasks:[
+      {t:'Your goal by Month 36: speak English as your working language.',s:'',time:''},
+      {t:'Have one English conversation per day minimum. Any topic.',s:'',time:'20 min'},
+      {t:'Watch English news (BBC, DW) for 15 minutes daily.',s:'',time:'15 min'},
+      {t:'Write one technical piece per week: blog, LinkedIn, GitHub README.',s:'',time:'30 min'},
+      {t:'Do one public technical presentation in English. Any venue.',s:'Local meetup, college event, anything.',time:''},
+    ]},
+  ],win:'Hard problems becoming manageable. Advanced system design fluent. English near-professional.',rule:''},
+
+  {id:'m26',badge:'Month 26–28',title:'250 Leetcode + senior system design + new project',color:'#EEEDFE',txt:'#3C3489',prog:'#534AB7',skills:['dsa','system','projects'],weeks:[
+    {label:'DSA: to 250 problems',skill:'dsa',tasks:[
+      {t:'Solve 50 more problems: 30 Medium, 20 Hard.',s:'Target: 250 total by end of Month 28.',time:''},
+      {t:'Focus on company-specific problem sets for your top 5 targets.',s:'',time:''},
+      {t:'Build pattern recognition reflex: see a problem, immediately name the pattern.',s:'',time:''},
+      {t:'Time strictly: Easy 10 min, Medium 25 min, Hard 45 min.',s:'',time:''},
+      {t:'Milestone: 250 Leetcode problems. Top 10% of candidates.',s:'',time:''},
+    ]},
+    {label:'System design: senior concepts',skill:'system',tasks:[
+      {t:'Understand SAGA pattern for distributed transactions. Relevant for FinTech.',s:'',time:'45 min'},
+      {t:'Understand CQRS and event sourcing.',s:'',time:'45 min'},
+      {t:'Design a real-time analytics dashboard for BC agent performance.',s:'',time:'60 min'},
+      {t:'Read one real company post-mortem. What failed? Why?',s:'Google "engineering post-mortem GitHub".',time:'30 min'},
+      {t:'Do one system design interview at senior level. Ask for harder problems.',s:'',time:'60 min'},
+    ]},
+    {label:'Projects: build something new and fully own it',skill:'projects',tasks:[
+      {t:'Build a new project from scratch. No AI. No tutorial.',s:'Idea: a FinTech analytics tool using real open data.',time:''},
+      {t:'It must solve a real problem. Not a to-do app.',s:'',time:''},
+      {t:'Write the entire spec yourself before coding.',s:'Problem, who uses it, how it works.',time:'30 min'},
+      {t:'Ship it publicly. Deploy. Share on LinkedIn.',s:'',time:''},
+      {t:'Defend every technical decision under interview pressure.',s:'',time:''},
+    ]},
+  ],win:'250 Leetcode. Senior system design comfortable. One new fully-owned project shipped.',rule:''},
+
+  {id:'m27',badge:'Month 29–30',title:'Final interview preparation — peak condition',color:'#E1F5EE',txt:'#085041',prog:'#0F6E56',skills:['interview','dsa','english'],weeks:[
+    {label:'Interview peak condition',skill:'interview',tasks:[
+      {t:'12 mock interviews in 2 months. 6 technical, 6 behavioral + system design.',s:'',time:'60 min each'},
+      {t:'Every mock must be on video. Review every recording.',s:'You will catch things you did not feel during.',time:''},
+      {t:'Prepare company-specific answers: why Razorpay, why Zepto, why this role.',s:'Generic answers get rejected.',time:'20 min per company'},
+      {t:'Know your salary ask precisely. Practice saying the number without hesitation.',s:'',time:'15 min'},
+      {t:'Prepare 3 references who can speak to your technical skills.',s:'',time:''},
+    ]},
+    {label:'DSA: maintain peak',skill:'dsa',tasks:[
+      {t:'3 problems per day: 1 Easy warmup, 1 Medium, 1 Hard attempt.',s:'',time:'90 min'},
+      {t:'Can you code every pattern from scratch in 5 minutes?',s:'If no, revisit that pattern.',time:''},
+      {t:'Do one timed 90-minute coding assessment: 3 problems, no help.',s:'Replicate OA conditions exactly.',time:'90 min'},
+      {t:'If you fail the timed test: this is your real level. Adjust accordingly.',s:'',time:''},
+      {t:'Solve one problem from every company you are interviewing with.',s:'',time:''},
+    ]},
+    {label:'English: interview-grade communication',skill:'english',tasks:[
+      {t:'Answer unexpected questions in English without preparation time.',s:'Ask a friend to ask random questions.',time:'20 min'},
+      {t:'Practice what to say when genuinely stuck. Calmly, in English.',s:'"Let me think through this step by step."',time:'15 min'},
+      {t:'Practice small talk in English: weekend, last movie, opinion.',s:'Interviews start with small talk.',time:'15 min'},
+      {t:'Record one final mock interview. Watch as if you are the hiring manager.',s:'Would you hire this person?',time:'60 min'},
+      {t:'English should now be clear, fast, and confident under pressure.',s:'',time:''},
+    ]},
+  ],win:'Peak interview condition. 12 mocks done. Communication clean. You are ready.',rule:''},
+
+  {id:'m28',badge:'Month 31–33',title:'Active interview season — execute',color:'#FAEEDA',txt:'#633806',prog:'#854F0B',skills:['interview','english'],weeks:[
+    {label:'Applications at full volume',skill:'interview',tasks:[
+      {t:'Apply to 50 total targeted roles this quarter.',s:'Not 500. 50 researched ones.',time:''},
+      {t:'Every application: customize cover letter for the company.',s:'Generic = ignored.',time:'20 min each'},
+      {t:'Prioritize referrals over cold applications.',s:'A referred resume is 4x more likely to be read.',time:''},
+      {t:'Track every application: applied, OA, phone screen, final, offer, rejected.',s:'',time:''},
+      {t:'Do not stop applying after one interview. Pipeline until offer.',s:'',time:''},
+    ]},
+    {label:'During interviews',skill:'interview',tasks:[
+      {t:'Before each interview: solve 2 warmup problems. Do not go in cold.',s:'',time:'30 min'},
+      {t:'Research the interviewer on LinkedIn if possible.',s:'',time:'10 min'},
+      {t:'After each interview: send a thank-you email within 24 hours.',s:'Short. Professional. Real.',time:'10 min'},
+      {t:'Write down every question asked after each interview.',s:'',time:'20 min'},
+      {t:'Do not stop Leetcode. 1 problem per day minimum through offers.',s:'',time:''},
+    ]},
+    {label:'Handle rejection correctly',skill:'english',tasks:[
+      {t:'Every rejection is data. Ask for feedback when possible.',s:'',time:''},
+      {t:'Do not apply to the same role twice. Fix the gap first.',s:'',time:''},
+      {t:'If rejected after final round: what was the deciding factor?',s:'',time:'20 min'},
+      {t:'Send 5 applications the same day you get rejected. Do not pause.',s:'Rejection is part of the volume game.',time:''},
+      {t:'Keep application tracker updated daily.',s:'',time:'5 min'},
+    ]},
+  ],win:'Active interview pipeline. Handling rejection systematically. Executing without panic.',rule:''},
+
+  {id:'m29',badge:'Month 34–36',title:'Offer + negotiate + done',color:'#FBEAF0',txt:'#72243E',prog:'#993556',skills:['interview','english'],weeks:[
+    {label:'Getting to offer',skill:'interview',tasks:[
+      {t:'If you have an offer: do not accept the first number.',s:'',time:''},
+      {t:'Counter with: "Based on my research, I was targeting X."',s:'Say the number. Do not dance around it.',time:''},
+      {t:'Get competing offers if possible. Even one other offer changes the conversation.',s:'',time:''},
+      {t:'Evaluate offers on: salary, growth, tech stack, team — not just money.',s:'',time:'20 min per offer'},
+      {t:'Make a decision based on data. Not fear of losing the offer.',s:'',time:''},
+    ]},
+    {label:'If no offer by Month 36',skill:'interview',tasks:[
+      {t:'This is not the end. It is a recalibration point.',s:'',time:''},
+      {t:'Audit: DSA, system design, communication, or wrong targeting?',s:'Get specific feedback from a mock interviewer.',time:'30 min'},
+      {t:'Consider a ₹8–12 LPA role to get the experience first. Then move up.',s:'Getting in the door is not failure.',time:''},
+      {t:'Remote junior roles at international companies are another path.',s:'$800–1500/month remote = ₹8–15 LPA equivalent.',time:''},
+      {t:'Do not stop. The skills you built are real.',s:'',time:''},
+    ]},
+    {label:'Final honest reckoning',skill:'english',tasks:[
+      {t:'You started unable to write a for loop. Where are you now?',s:'Write it down honestly.',time:'20 min'},
+      {t:'Can you hold a 45-minute technical interview in English without switching?',s:'',time:''},
+      {t:'Can you solve 70% of Leetcode Mediums under 25 minutes?',s:'',time:''},
+      {t:'Can you design and defend a production system in an interview?',s:'',time:''},
+      {t:'If yes to all four: you have done something most BCA students in Bihar never do.',s:'The package follows the skills.',time:''},
+    ]},
+  ],win:'Offer negotiated and accepted — or a clear plan to reach ₹20–30 LPA within 6 more months. Either is a real win.',rule:''},
+];
+
+const YEAR_GROUPS=[
+  {label:'YEAR 1 — FUNDAMENTALS (2025–2026)',ids:['m1','m2','m3','m4','m5','m6','m7','m8','m9','m10','m11','m12']},
+  {label:'YEAR 2 — BECOME DANGEROUS (2026–2027)',ids:['m13','m14','m15','m16','m17','m18','m19','m20','m21','m22','m23','m24']},
+  {label:'YEAR 3 — GET THE OFFER (2027–2028)',ids:['m25','m26','m27','m28','m29']},
+];
+
+const KEY='samar_fullmap_v1';
+let checked=JSON.parse(localStorage.getItem(KEY)||'{}');
+let cf='all';
+
+function save(){localStorage.setItem(KEY,JSON.stringify(checked));}
+function tid(mid,wi,ti){return `${mid}_w${wi}_t${ti}`;}
+
+function fs(skill,btn){
+  cf=skill;
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  btn.classList.add('active');
+  renderAll();
+}
+
+function tog(id){
+  const b=document.getElementById('bd-'+id);
+  const ic=document.getElementById('ic-'+id);
+  if(!b)return;
+  const open=b.classList.contains('open');
+  b.classList.toggle('open',!open);
+  ic.textContent=open?'▸':'▾';
+}
+
+function toggleTask(taskId){
+  checked[taskId]=!checked[taskId];
+  save();
+  const box=document.getElementById('box-'+taskId);
+  const nm=document.getElementById('nm-'+taskId);
+  if(box){box.className='cbox'+(checked[taskId]?' done':'');box.textContent=checked[taskId]?'✓':'';}
+  if(nm){nm.className='tname'+(checked[taskId]?' done':'');}
+  const mid=taskId.split('_')[0];
+  updateProg(mid);
+  updateStats();
+}
+
+function updateProg(mid){
+  const m=months.find(x=>x.id===mid);
+  if(!m)return;
+  let total=0,done=0;
+  m.weeks.forEach((w,wi)=>{
+    if(cf==='all'||cf===w.skill){
+      w.tasks.forEach((_,ti)=>{total++;if(checked[tid(mid,wi,ti)])done++;});
+    }
+  });
+  const pct=total?Math.round(done/total*100):0;
+  const f=document.getElementById('pf-'+mid);
+  const p=document.getElementById('pp-'+mid);
+  if(f)f.style.width=pct+'%';
+  if(p)p.textContent=done+'/'+total;
+}
+
+function updateStats(){
+  let total=0,done=0;
+  months.forEach(m=>m.weeks.forEach((w,wi)=>{
+    if(cf==='all'||cf===w.skill){
+      w.tasks.forEach((_,ti)=>{total++;if(checked[tid(m.id,wi,ti)])done++;});
+    }
+  }));
+  document.getElementById('dc').textContent=done;
+  document.getElementById('tc').textContent=total;
+}
+
+function renderAll(){
+  const c=document.getElementById('tracker');
+  c.innerHTML='';
+  YEAR_GROUPS.forEach((yr,yi)=>{
+    const grpMonths=months.filter(m=>yr.ids.includes(m.id));
+    const visMonths=grpMonths.filter(m=>cf==='all'||m.weeks.some(w=>w.skill===cf));
+    if(!visMonths.length)return;
+    const yl=document.createElement('div');
+    yl.className='year-label';
+    yl.textContent=yr.label;
+    c.appendChild(yl);
+    visMonths.forEach((m,mi)=>{
+      const visWeeks=m.weeks.filter(w=>cf==='all'||w.skill===cf);
+      if(!visWeeks.length)return;
+      let total=0,done=0;
+      visWeeks.forEach(w=>{
+        const wi=m.weeks.indexOf(w);
+        w.tasks.forEach((_,ti)=>{total++;if(checked[tid(m.id,wi,ti)])done++;});
+      });
+      const pct=total?Math.round(done/total*100):0;
+      const isFirst=yi===0&&mi===0;
+      const sbHtml=m.skills.filter(s=>cf==='all'||s===cf)
+        .map(s=>`<span class="sbadge" style="background:${SC[s].bg};color:${SC[s].txt};">${s}</span>`).join('');
+      const weeksHtml=visWeeks.map(w=>{
+        const wi=m.weeks.indexOf(w);
+        return `<div><div class="wlabel" style="color:${SC[w.skill]?.txt||'#666'};">${w.label}</div>${w.tasks.map((task,ti)=>{
+          const id=tid(m.id,wi,ti);
+          const isDone=!!checked[id];
+          return `<div class="trow" onclick="toggleTask('${id}')">
+            <div class="cbox${isDone?' done':''}" id="box-${id}">${isDone?'✓':''}</div>
+            <div class="tinfo">
+              <div class="tname${isDone?' done':''}" id="nm-${id}">${task.t}</div>
+              ${task.s?`<div class="tsub">${task.s}</div>`:''}
+            </div>
+            <div class="ttime">${task.time||''}</div>
+          </div>`;
+        }).join('')}</div>`;
+      }).join('');
+      const div=document.createElement('div');
+      div.className='month-card';
+      div.innerHTML=`
+        <div class="month-hdr" onclick="tog('${m.id}')">
+          <span class="mbadge" style="background:${m.color};color:${m.txt};">${m.badge}</span>
+          <div class="mtitle-wrap">
+            <div class="mtitle">${m.title}</div>
+            <div class="sbadges">${sbHtml}</div>
+            <div class="ptrack"><div class="pfill" id="pf-${m.id}" style="width:${pct}%;background:${m.prog};"></div></div>
+          </div>
+          <span class="mprog" id="pp-${m.id}">${done}/${total}</span>
+          <span class="chev" id="ic-${m.id}">${isFirst?'▾':'▸'}</span>
+        </div>
+        <div class="mbody${isFirst?' open':''}" id="bd-${m.id}">
+          ${weeksHtml}
+          <div class="win-box"><strong>Win:</strong> ${m.win}</div>
+          ${m.rule?`<div class="rule-box">${m.rule}</div>`:''}
+        </div>`;
+      c.appendChild(div);
+    });
+  });
+  updateStats();
+}
+
+function resetAll(){
+  if(!confirm('Reset ALL progress across all 3 years? This cannot be undone.'))return;
+  checked={};save();renderAll();
+}
+
+renderAll();
+</script>
+</body>
+</html>

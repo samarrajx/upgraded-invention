@@ -10,7 +10,7 @@ export function render() {
 <div class="view-interviews">
   <div class="page-header" style="display:flex;justify-content:space-between;align-items:flex-end;">
     <div>
-      <div class="page-title">🎤 Mock Interviews</div>
+      <div class="page-title"><i data-lucide="mic" style="width:24px;height:24px;margin-right:8px;vertical-align:text-bottom;"></i> Mock Interviews</div>
       <div class="page-subtitle">Log your practice sessions and confidence.</div>
     </div>
     <button class="btn btn-primary" onclick="window._addIvw()">+ Log Session</button>
@@ -29,7 +29,7 @@ export function render() {
           <div>${item.date} <button class="btn btn-ghost" style="padding:2px 6px;margin-left:8px;" onclick="window._delIvw(${item.id})">×</button></div>
         </div>
       </div>
-    `).join('') : `<div class="empty-state" style="grid-column:1/-1;"><div class="empty-state-icon">🗣️</div><div class="empty-state-title">No interviews logged</div></div>`}
+    `).join('') : `<div class="empty-state" style="grid-column:1/-1;"><div class="empty-state-icon"><i data-lucide="message-square"></i></div><div class="empty-state-title">No interviews logged</div></div>`}
   </div>
 </div>`;
 }

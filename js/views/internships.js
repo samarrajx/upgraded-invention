@@ -40,7 +40,7 @@ export function render() {
 <div class="view-internships">
   <div class="page-header" style="display:flex;justify-content:space-between;align-items:flex-end;">
     <div>
-      <div class="page-title">💼 Internships</div>
+      <div class="page-title"><i data-lucide="briefcase" style="width:24px;height:24px;margin-right:8px;vertical-align:text-bottom;"></i> Internships</div>
       <div class="page-subtitle">Track your applications and follow-ups.</div>
     </div>
     <button class="btn btn-primary" onclick="window._addInt()">+ New Application</button>
@@ -49,7 +49,7 @@ export function render() {
   <div class="grid-3" id="intern-list">
     ${list.length ? list.reverse().map(renderCard).join('') : `
       <div class="empty-state" style="grid-column:1/-1;">
-        <div class="empty-state-icon">📝</div>
+        <div class="empty-state-icon"><i data-lucide="file-text"></i></div>
         <div class="empty-state-title">No applications yet</div>
         <div class="empty-state-desc">Start applying and track them here.</div>
       </div>`}

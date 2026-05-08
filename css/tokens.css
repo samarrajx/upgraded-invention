@@ -48,6 +48,7 @@
   --s-ma-bg:  #271c08; --s-ma-tx:  #fbbf24; --s-ma-pr: #f59e0b;
   --s-pr-bg:  #18143a; --s-pr-tx:  #a78bfa; --s-pr-pr: #8b5cf6;
   --s-in-bg:  #2a1020; --s-in-tx:  #f472b6; --s-in-pr: #ec4899;
+  --s-sy-bg:  #082f49; --s-sy-tx:  #38bdf8; --s-sy-pr: #0ea5e9;
 
   /* Glassmorphism */
   --glass-bg:  rgba(255,255,255,0.04);
@@ -109,6 +110,7 @@
   --s-ma-bg:#fef3c7; --s-ma-tx:#b45309; --s-ma-pr:#d97706;
   --s-pr-bg:#ede9fe; --s-pr-tx:#6d28d9; --s-pr-pr:#7c3aed;
   --s-in-bg:#fce7f3; --s-in-tx:#be185d; --s-in-pr:#db2777;
+  --s-sy-bg:#e0f2f1; --s-sy-tx:#00796b; --s-sy-pr:#009688;
 }
 
 /* ── Reset ── */

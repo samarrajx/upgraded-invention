@@ -438,10 +438,16 @@
   margin: var(--s5) 0;
 }
 
-/* ── Year label ── */
-.year-label {
-  font-size: 11px; font-weight: 700;
-  letter-spacing: .08em; text-transform: uppercase;
-  color: var(--tx-3);
-  margin: var(--s6) 0 var(--s3);
+/* ── Year Header ── */
+.year-header {
+  font-size: 13px; font-weight: 800;
+  letter-spacing: .1em; text-transform: uppercase;
+  color: var(--tx-2);
+  margin: var(--s8) 0 var(--s4);
+  display: flex; align-items: center; gap: var(--s2);
+  border-left: 3.5px solid var(--primary);
+  padding-left: var(--s3);
+  background: linear-gradient(90deg, var(--surface-2), transparent);
+  padding-top: var(--s2);
+  padding-bottom: var(--s2);
 }

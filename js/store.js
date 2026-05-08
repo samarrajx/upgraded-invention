@@ -267,10 +267,10 @@ export function getProgressStats(months) {
 
 export function getSkillStats(months) {
   const skills = {};
-  months.forEach(m => m.weeks.forEach(w => {
+  months.forEach(m => m.weeks.forEach((w, wi) => {
     if (!skills[w.skill]) skills[w.skill] = { total: 0, done: 0 };
     w.tasks.forEach((_, ti) => {
-      const id = `${m.id}_w${m.weeks.indexOf(w)}_t${ti}`;
+      const id = `${m.id}_w${wi}_t${ti}`;
       skills[w.skill].total++;
       if (_state.checked[id]) skills[w.skill].done++;
     });

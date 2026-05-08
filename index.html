@@ -23,13 +23,14 @@
   <link rel="stylesheet" href="./css/layout.css">
   <link rel="stylesheet" href="./css/components.css">
   <link rel="stylesheet" href="./css/animations.css">
+  <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 <body class="theme-dark">
 
   <!-- Desktop Sidebar -->
   <nav class="sidebar">
     <div class="brand">
-      <div class="brand-icon">🧠</div>
+      <div class="brand-icon"><i data-lucide="cpu"></i></div>
       <div style="display:flex;flex-direction:column;">
         <span>AI Eng OS</span>
         <div style="font-size:10px;font-weight:700;color:var(--primary);margin-top:2px;letter-spacing:0.05em;text-transform:uppercase;">
@@ -39,28 +40,28 @@
     </div>
     <div class="nav-links">
       <a href="#dashboard" class="nav-item active" data-route="dashboard">
-        <span class="nav-icon">⊞</span> Dashboard
+        <i data-lucide="layout-dashboard"></i> <span>Dashboard</span>
       </a>
       <a href="#roadmap" class="nav-item" data-route="roadmap">
-        <span class="nav-icon">🗺️</span> Roadmap
+        <i data-lucide="map"></i> <span>Roadmap</span>
       </a>
       <a href="#focus" class="nav-item" data-route="focus">
-        <span class="nav-icon">🎯</span> Focus
+        <i data-lucide="target"></i> <span>Focus</span>
       </a>
       <a href="#analytics" class="nav-item" data-route="analytics">
-        <span class="nav-icon">📈</span> Analytics
+        <i data-lucide="trending-up"></i> <span>Analytics</span>
       </a>
       <a href="#heatmap" class="nav-item" data-route="heatmap">
-        <span class="nav-icon">🔥</span> Heatmap
+        <i data-lucide="calendar"></i> <span>Heatmap</span>
       </a>
       <a href="#internships" class="nav-item" data-route="internships">
-        <span class="nav-icon">💼</span> Internships
+        <i data-lucide="briefcase"></i> <span>Internships</span>
       </a>
       <a href="#interviews" class="nav-item" data-route="interviews">
-        <span class="nav-icon">🎤</span> Interviews
+        <i data-lucide="mic"></i> <span>Interviews</span>
       </a>
       <a href="#settings" class="nav-item" data-route="settings">
-        <span class="nav-icon">⚙️</span> Settings
+        <i data-lucide="settings"></i> <span>Settings</span>
       </a>
     </div>
   </nav>
@@ -68,7 +69,7 @@
   <!-- Mobile Top Header -->
   <header class="mobile-header">
     <div class="brand">
-      <div class="brand-icon" style="width:28px;height:28px;font-size:14px;">🧠</div>
+      <div class="brand-icon" style="width:28px;height:28px;font-size:14px;"><i data-lucide="cpu" style="width:16px;height:16px;"></i></div>
       <span>AI Eng OS</span>
     </div>
     <div class="profile-pill">
@@ -80,7 +81,7 @@
   <main class="main-content">
     <div id="app" class="anim-fade-in">
       <div style="display:flex; flex-direction:column; align-items:center; justify-content:center; height:60vh; text-align:center; padding:var(--s12); opacity:0.6;">
-        <div style="font-size:48px; margin-bottom:var(--s4);">⏳</div>
+        <div style="font-size:48px; margin-bottom:var(--s4);"><i data-lucide="loader-2" class="spin" style="width:48px;height:48px;"></i></div>
         <h2 style="margin-bottom:var(--s2);">Initializing Career OS...</h2>
         <p style="max-width:400px; font-size:14px; line-height:1.6;">
           If this screen persists, please run the app using a local server (e.g., <b>VS Code Live Server</b> or <code>npx serve</code>). 
@@ -93,19 +94,19 @@
   <!-- Mobile Bottom Navigation -->
   <nav class="bottom-nav">
     <a href="#dashboard" class="bnav-item active" data-route="dashboard">
-      <span class="bnav-icon">⊞</span>
+      <i data-lucide="layout-dashboard"></i>
       <span>Home</span>
     </a>
     <a href="#roadmap" class="bnav-item" data-route="roadmap">
-      <span class="bnav-icon">🗺️</span>
+      <i data-lucide="map"></i>
       <span>Plan</span>
     </a>
     <a href="#focus" class="bnav-item" data-route="focus">
-      <span class="bnav-icon">🎯</span>
+      <i data-lucide="target"></i>
       <span>Focus</span>
     </a>
     <a href="#internships" class="bnav-item" data-route="internships">
-      <span class="bnav-icon">💼</span>
+      <i data-lucide="briefcase"></i>
       <span>Careers</span>
     </a>
   </nav>

@@ -6,7 +6,7 @@ export function render() {
   return `
 <div class="view-heatmap">
   <div class="page-header">
-    <div class="page-title">🔥 Consistency Heatmap</div>
+    <div class="page-title"><i data-lucide="calendar" style="width:24px;height:24px;margin-right:8px;vertical-align:text-bottom;"></i> Consistency Heatmap</div>
     <div class="page-subtitle">Every day counts towards your 3-year goal.</div>
   </div>
 

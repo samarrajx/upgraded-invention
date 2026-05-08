@@ -1,16 +1,13 @@
 // js/views/roadmap.js — Full roadmap tracker
 
 import { getState, toggleTask } from '../store.js';
-import { SKILL_COLORS } from '../data.js';
+import { SKILL_COLORS, YEAR_GROUPS, SKILL_LABELS } from '../data.js';
 import { checkBadges, showXPFloat, showToast } from '../gamification.js';
 
 let _months = null;
 let _filter = 'all';
 
-const SKILL_LABELS = {
-  python:'Python', dsa:'DSA', english:'English',
-  math:'Math', projects:'Projects', interview:'Interview'
-};
+
 
 function tid(mid, wi, ti) { return `${mid}_w${wi}_t${ti}`; }
 
@@ -50,9 +47,8 @@ function renderMonth(m, idx, filter) {
   if (!visWeeks.length) return '';
 
   const { total, done, pct } = calcPct(m, filter);
-  const open = idx === 0 && filter === 'all';
-  const sc = SKILL_COLORS[m.skills?.[0]] || {};
-
+  const open = idx === 0 && filter === 'all' && m.id === 'm1';
+  
   const skillBadges = (m.skills || [])
     .filter(sk => filter === 'all' || sk === filter)
     .map(sk => `<span class="skill-badge skill-${sk}">${SKILL_LABELS[sk]||sk}</span>`)
@@ -80,7 +76,7 @@ function renderMonth(m, idx, filter) {
         </div>
       </div>
       <span class="month-prog-txt" id="pp-${m.id}">${done}/${total}</span>
-      <span class="month-chev" id="chev-${m.id}" style="transform:${open?'rotate(180deg)':'none'};">▾</span>
+      <span class="month-chev" id="chev-${m.id}" style="transform:${open?'rotate(180deg)':'none'};"><i data-lucide="chevron-down"></i></span>
     </div>
     <div class="month-body ${open?'open':''}" id="bd-${m.id}">
       ${weeksHtml}
@@ -104,25 +100,37 @@ function renderStats(months, filter) {
   return { total, done, pct };
 }
 
+function renderMonthList(months, filter) {
+  const yearHtml = YEAR_GROUPS.map(yg => {
+    const yearMonths = months.filter(m => yg.ids.includes(m.id) && (filter === 'all' || m.weeks.some(w => w.skill === filter)));
+    if (!yearMonths.length) return '';
+    return `
+      <div class="year-group">
+        <div class="year-header">${yg.label}</div>
+        ${yearMonths.map((m, i) => renderMonth(m, i, filter)).join('')}
+      </div>
+    `;
+  }).join('');
+
+  return yearHtml || `<div class="empty-state"><div class="empty-state-icon"><i data-lucide="search"></i></div><div class="empty-state-title">No months match this filter</div></div>`;
+}
+
 export function render(months) {
   _months = months;
   const { total, done, pct } = renderStats(months, _filter);
 
-  const filters = ['all','python','dsa','english','math','projects','interview'];
+  const filters = ['all','python','dsa','english','math','projects','interview','system'];
   const filterHtml = filters.map(f =>
     `<button class="filter-tab ${_filter===f?'active':''}" data-f="${f}">${f==='all'?'All':SKILL_LABELS[f]||f}</button>`
   ).join('');
-
-  const visMonths = months.filter(m => _filter==='all' || m.weeks.some(w=>w.skill===_filter));
-  const monthsHtml = visMonths.map((m, i) => renderMonth(m, i, _filter)).join('');
 
   return `
 <div class="view-roadmap">
   <div class="page-header">
     <div style="display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:var(--s3);">
       <div>
-        <div class="page-title">🗺️ Roadmap</div>
-        <div class="page-subtitle">Year 1 — Fundamentals (2025–2026)</div>
+        <div class="page-title"><i data-lucide="map" style="width:24px;height:24px;margin-right:8px;vertical-align:text-bottom;"></i> Career OS Roadmap</div>
+        <div class="page-subtitle">3-Year AI Engineer Mastery Path</div>
       </div>
       <div style="text-align:right;">
         <div style="font-size:28px;font-weight:800;color:var(--primary);">${pct}%</div>
@@ -137,7 +145,7 @@ export function render(months) {
   <div class="filter-tabs">${filterHtml}</div>
 
   <div id="month-list" class="anim-stagger">
-    ${monthsHtml || `<div class="empty-state"><div class="empty-state-icon">🔍</div><div class="empty-state-title">No months match this filter</div></div>`}
+    ${renderMonthList(months, _filter)}
   </div>
 </div>`;
 }
@@ -152,11 +160,10 @@ export function mount(months) {
       document.querySelectorAll('.filter-tab').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
       const list = document.getElementById('month-list');
-      const vis = months.filter(m => _filter==='all' || m.weeks.some(w=>w.skill===_filter));
-      list.innerHTML = vis.map((m, i) => renderMonth(m, i, _filter)).join('') ||
-        `<div class="empty-state"><div class="empty-state-icon">🔍</div><div class="empty-state-title">No months match</div></div>`;
+      list.innerHTML = renderMonthList(months, _filter);
       _bindTasks(months);
       _updateTopStats(months);
+      if (window.lucide) window.lucide.createIcons();
     });
   });
 
@@ -212,8 +219,8 @@ function _updateTopStats(months) {
   const { total, done, pct } = renderStats(months, _filter);
   const bar = document.querySelector('.view-roadmap .prog-fill');
   if (bar) bar.style.width = pct + '%';
-  const pctEl = document.querySelector('.view-roadmap .page-title + div > div:first-child > div:last-child > div:first-child');
-  // Update via query
   const els = document.querySelectorAll('.view-roadmap .page-header [style*="font-size:28px"]');
   els.forEach(el => el.textContent = pct + '%');
+  const taskCountEl = document.querySelector('.view-roadmap .page-header [style*="font-size:12px"]');
+  if (taskCountEl) taskCountEl.textContent = `${done} / ${total} tasks`;
 }

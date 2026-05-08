@@ -1,26 +1,29 @@
 // js/gamification.js — XP, badges, streaks, confetti
 
 import { getState, awardBadge, getLevelInfo } from './store.js';
+import { YEAR_GROUPS } from './data.js';
 
 // ── Badge definitions ──
 export const BADGES = [
-  { id:'first_task',    icon:'🎯', name:'First Step',        desc:'Complete your first task' },
-  { id:'week_done',     icon:'📅', name:'Week Warrior',      desc:'Complete a full week' },
-  { id:'xp_100',        icon:'⚡', name:'Energized',         desc:'Earn 100 XP' },
-  { id:'xp_500',        icon:'🔥', name:'On Fire',           desc:'Earn 500 XP' },
-  { id:'xp_1000',       icon:'💎', name:'Diamond Grinder',   desc:'Earn 1000 XP' },
-  { id:'streak_3',      icon:'🌟', name:'3-Day Streak',      desc:'3 days in a row' },
-  { id:'streak_7',      icon:'🚀', name:'Weekly Rocket',     desc:'7-day streak' },
-  { id:'streak_30',     icon:'🏆', name:'Iron Discipline',   desc:'30-day streak' },
-  { id:'leet_10',       icon:'💻', name:'Code Starter',      desc:'Solve 10 LeetCode problems' },
-  { id:'leet_50',       icon:'🧠', name:'Problem Solver',    desc:'Solve 50 LeetCode problems' },
-  { id:'leet_100',      icon:'🎖️', name:'Centurion',         desc:'Solve 100 LeetCode problems' },
-  { id:'month_done',    icon:'🗺️', name:'Month Mastered',    desc:'Complete a full month' },
-  { id:'internship_1',  icon:'💼', name:'Career Hunter',     desc:'Log your first internship application' },
-  { id:'interview_1',   icon:'🎤', name:'Mock Master',       desc:'Log your first mock interview' },
-  { id:'level_3',       icon:'🔬', name:'Builder Rank',      desc:'Reach Level 3' },
-  { id:'level_5',       icon:'🏗️', name:'Architect Rank',    desc:'Reach Level 5' },
-  { id:'year_1',        icon:'🎓', name:'Year One Done',     desc:'Complete Year 1' },
+  { id:'first_task',    icon:'target', name:'First Step',        desc:'Complete your first task' },
+  { id:'week_done',     icon:'calendar', name:'Week Warrior',      desc:'Complete a full week' },
+  { id:'xp_100',        icon:'zap', name:'Energized',         desc:'Earn 100 XP' },
+  { id:'xp_500',        icon:'flame', name:'On Fire',           desc:'Earn 500 XP' },
+  { id:'xp_1000',       icon:'diamond', name:'Diamond Grinder',   desc:'Earn 1000 XP' },
+  { id:'streak_3',      icon:'star', name:'3-Day Streak',      desc:'3 days in a row' },
+  { id:'streak_7',      icon:'rocket', name:'Weekly Rocket',     desc:'7-day streak' },
+  { id:'streak_30',     icon:'trophy', name:'Iron Discipline',   desc:'30-day streak' },
+  { id:'leet_10',       icon:'terminal', name:'Code Starter',      desc:'Solve 10 LeetCode problems' },
+  { id:'leet_50',       icon:'cpu', name:'Problem Solver',    desc:'Solve 50 LeetCode problems' },
+  { id:'leet_100',      icon:'medal', name:'Centurion',         desc:'Solve 100 LeetCode problems' },
+  { id:'month_done',    icon:'map', name:'Month Mastered',    desc:'Complete a full month' },
+  { id:'internship_1',  icon:'briefcase', name:'Career Hunter',     desc:'Log your first internship application' },
+  { id:'interview_1',   icon:'mic', name:'Mock Master',       desc:'Log your first mock interview' },
+  { id:'level_3',       icon:'wrench', name:'Builder Rank',      desc:'Reach Level 3' },
+  { id:'level_5',       icon:'hard-hat', name:'Architect Rank',    desc:'Reach Level 5' },
+  { id:'year_1',        icon:'graduation-cap', name:'Year One Done',     desc:'Complete Year 1' },
+  { id:'year_2',        icon:'shield-check', name:'Dangerous Level',   desc:'Complete Year 2' },
+  { id:'year_3',        icon:'award', name:'Career OS Mastery',  desc:'Complete all 3 years' },
 ];
 
 // ── Check & award badges ──
@@ -61,12 +64,16 @@ export function checkBadges(months) {
       );
       if (allDone) give('month_done');
     });
-    // Year 1 complete
-    const y1 = months.slice(0, 12);
-    const y1Done = y1.every(m => m.weeks.every((w, wi) =>
-      w.tasks.every((_, ti) => s.checked[`${m.id}_w${wi}_t${ti}`])
-    ));
-    if (y1Done) give('year_1');
+    
+    // Dynamic Year complete check
+    YEAR_GROUPS.forEach((yg, idx) => {
+      const yearMonths = months.filter(m => yg.ids.includes(m.id));
+      if (!yearMonths.length) return;
+      const allYearDone = yearMonths.every(m => m.weeks.every((w, wi) =>
+        w.tasks.every((_, ti) => s.checked[`${m.id}_w${wi}_t${ti}`])
+      ));
+      if (allYearDone) give(`year_${idx+1}`);
+    });
   }
 
   return awarded;
@@ -103,6 +110,7 @@ export function getSmartSuggestion(months) {
     math: 'Math foundations matter for ML. Squeeze in one Khan Academy session.',
     projects: 'Project work shows discipline. Spend 30 min on your rebuild.',
     interview: 'Interview prep is overdue. Do one mock answer today.',
+    system: 'System Design is critical for high-tier roles. Read a chapter today.',
   };
 
   if (weakest && weakPct < 80) {
@@ -209,13 +217,17 @@ export function launchConfetti() {
 }
 
 // ── Toast notification ──
-export function showToast(msg, icon = 'ℹ️', duration = 3000) {
+export function showToast(msg, icon = 'info', duration = 3000) {
   const container = document.getElementById('toasts');
   if (!container) return;
   const el = document.createElement('div');
   el.className = 'toast';
-  el.innerHTML = `<span class="toast-icon">${icon}</span><span>${msg}</span>`;
+  const iconHtml = icon.length > 3 || ['cpu','zap','map','mic','briefcase','calendar','target','flame','award','settings','trending-up','star','rocket','trophy','terminal','medal','graduation-cap','wrench','hard-hat','diamond','shield-check'].includes(icon) 
+    ? `<i data-lucide="${icon}"></i>` 
+    : icon;
+  el.innerHTML = `<span class="toast-icon">${iconHtml}</span><span>${msg}</span>`;
   container.appendChild(el);
+  if (window.lucide) window.lucide.createIcons();
   setTimeout(() => {
     el.classList.add('toast-exit');
     setTimeout(() => el.remove(), 300);
