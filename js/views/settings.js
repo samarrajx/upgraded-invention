@@ -105,7 +105,7 @@ export async function generateReport(months) {
   ctx.fillRect(0, 0, W, 3);
 
   // App name
-  ctx.font      = \`800 52px \${FONT}\`;
+  ctx.font      = `800 52px ${FONT}`;
   ctx.fillStyle = C.tx;
   ctx.textAlign = 'left';
   ctx.fillText('Career OS', 60, 68);
@@ -115,7 +115,7 @@ export async function generateReport(months) {
   ctx.fillStyle = 'rgba(124,111,247,0.18)';
   roundRect(ctx, badgeX, badgeY, badgeW, badgeH, 18);
   ctx.fill();
-  ctx.font      = \`600 15px \${FONT}\`;
+  ctx.font      = `600 15px ${FONT}`;
   ctx.fillStyle = C.primary;
   ctx.textAlign = 'left';
   ctx.fillText('PROGRESS REPORT', badgeX + 16, badgeY + 23);
@@ -124,20 +124,20 @@ export async function generateReport(months) {
   const dateStr = new Date().toLocaleDateString('en-IN', {
     year:'numeric', month:'long', day:'numeric'
   });
-  ctx.font      = \`500 18px \${FONT}\`;
+  ctx.font      = `500 18px ${FONT}`;
   ctx.fillStyle = C.tx2;
   ctx.textAlign = 'right';
   ctx.fillText(dateStr, W - 60, 68);
-  ctx.font      = \`500 15px \${FONT}\`;
+  ctx.font      = `500 15px ${FONT}`;
   ctx.fillText('Target: ₹20–30 LPA · BCA 2028', W - 60, 95);
 
   let y = 195; // current Y cursor
 
   // ── 3. HERO STATS — 4 cards ──
   const heroStats = [
-    { label:'Tasks Done',    value: progress.done,          sub: \`of \${progress.total} total\`,   color: C.primary },
-    { label:'XP Earned',     value: state.xp.toLocaleString(), sub: \`Level \${level.level} — \${level.title}\`, color: C.accent  },
-    { label:'Day Streak',    value: state.streak,           sub: \`best: \${state.longestStreak||0} days\`, color: C.amber   },
+    { label:'Tasks Done',    value: progress.done,          sub: `of ${progress.total} total`,   color: C.primary },
+    { label:'XP Earned',     value: state.xp.toLocaleString(), sub: `Level ${level.level} — ${level.title}`, color: C.accent  },
+    { label:'Day Streak',    value: state.streak,           sub: `best: ${state.longestStreak||0} days`, color: C.amber   },
     { label:'Leetcode',      value: state.leetcodeCount,    sub: 'problems solved',              color: C.sky     },
   ];
   const cardW = 248, cardH = 140, cardGap = 16;
@@ -163,18 +163,18 @@ export async function generateReport(months) {
     ctx.fill();
 
     // Value (big number)
-    ctx.font      = \`800 44px \${FONT}\`;
+    ctx.font      = `800 44px ${FONT}`;
     ctx.fillStyle = C.tx;
     ctx.textAlign = 'left';
     ctx.fillText(String(stat.value), cx + 22, y + 68);
 
     // Label
-    ctx.font      = \`600 13px \${FONT}\`;
+    ctx.font      = `600 13px ${FONT}`;
     ctx.fillStyle = stat.color;
     ctx.fillText(stat.label.toUpperCase(), cx + 22, y + 30);
 
     // Sub-text
-    ctx.font      = \`400 13px \${FONT}\`;
+    ctx.font      = `400 13px ${FONT}`;
     ctx.fillStyle = C.tx2;
     ctx.fillText(stat.sub, cx + 22, y + 100);
   });
@@ -183,7 +183,7 @@ export async function generateReport(months) {
 
   // ── 4. LEVEL + XP BAR ──
   // Section header
-  ctx.font      = \`700 22px \${FONT}\`;
+  ctx.font      = `700 22px ${FONT}`;
   ctx.fillStyle = C.tx;
   ctx.textAlign = 'left';
   ctx.fillText('Level Progress', 60, y);
@@ -206,24 +206,24 @@ export async function generateReport(months) {
   ctx.fill();
 
   // Bar text (centered on bar)
-  ctx.font      = \`700 13px \${FONT}\`;
+  ctx.font      = `700 13px ${FONT}`;
   ctx.fillStyle = '#fff';
   ctx.textAlign = 'center';
-  ctx.fillText(\`Level \${level.level} — \${level.title}\`, barX + barW / 2, y + 18);
+  ctx.fillText(`Level ${level.level} — ${level.title}`, barX + barW / 2, y + 18);
 
   // Next level text
-  ctx.font      = \`500 13px \${FONT}\`;
+  ctx.font      = `500 13px ${FONT}`;
   ctx.fillStyle = C.tx2;
   ctx.textAlign = 'right';
   const nextLabel = level.nextXP
-    ? \`\${level.pct}% to Level \${level.level + 1} (\${level.nextXP} XP)\`
+    ? `${level.pct}% to Level ${level.level + 1} (${level.nextXP} XP)`
     : 'MAX LEVEL';
   ctx.fillText(nextLabel, W - 60, y + barH + 20);
 
   y += barH + 52;
 
   // ── 5. OVERALL PROGRESS — large donut + percentage ──
-  ctx.font      = \`700 22px \${FONT}\`;
+  ctx.font      = `700 22px ${FONT}`;
   ctx.fillStyle = C.tx;
   ctx.textAlign = 'left';
   ctx.fillText('Overall Roadmap Progress', 60, y);
@@ -251,17 +251,17 @@ export async function generateReport(months) {
 
   // Center text
   ctx.textAlign = 'center';
-  ctx.font      = \`800 72px \${FONT}\`;
+  ctx.font      = `800 72px ${FONT}`;
   ctx.fillStyle = C.tx;
-  ctx.fillText(\`\${progress.pct}%\`, donutCX, donutCY + 16);
-  ctx.font      = \`500 18px \${FONT}\`;
+  ctx.fillText(`${progress.pct}%`, donutCX, donutCY + 16);
+  ctx.font      = `500 18px ${FONT}`;
   ctx.fillStyle = C.tx2;
-  ctx.fillText(\`\${progress.done} of \${progress.total} tasks\`, donutCX, donutCY + 46);
+  ctx.fillText(`${progress.done} of ${progress.total} tasks`, donutCX, donutCY + 46);
 
   y = donutCY + donutR + 52;
 
   // ── 6. SKILL BREAKDOWN — horizontal bars ──
-  ctx.font      = \`700 22px \${FONT}\`;
+  ctx.font      = `700 22px ${FONT}`;
   ctx.fillStyle = C.tx;
   ctx.textAlign = 'left';
   ctx.fillText('Skill Breakdown', 60, y);
@@ -283,7 +283,7 @@ export async function generateReport(months) {
     ctx.fill();
 
     // Skill name
-    ctx.font      = \`600 14px \${FONT}\`;
+    ctx.font      = `600 14px ${FONT}`;
     ctx.fillStyle = color;
     ctx.textAlign = 'left';
     ctx.fillText(skill.toUpperCase(), 80, y + 23);
@@ -302,10 +302,10 @@ export async function generateReport(months) {
     }
 
     // Percentage
-    ctx.font      = \`700 14px \${FONT}\`;
+    ctx.font      = `700 14px ${FONT}`;
     ctx.fillStyle = C.tx;
     ctx.textAlign = 'right';
-    ctx.fillText(\`\${pct}%  (\${sd}/\${st})\`, W - 70, y + 23);
+    ctx.fillText(`${pct}%  (${sd}/${st})`, W - 70, y + 23);
 
     y += skillBarH + skillGap;
   });
@@ -313,7 +313,7 @@ export async function generateReport(months) {
   y += 30;
 
   // ── 7. WEEKLY ACTIVITY — bar chart (last 12 weeks) ──
-  ctx.font      = \`700 22px \${FONT}\`;
+  ctx.font      = `700 22px ${FONT}`;
   ctx.fillStyle = C.tx;
   ctx.textAlign = 'left';
   ctx.fillText('Weekly Activity (Last 12 Weeks)', 60, y);
@@ -339,15 +339,15 @@ export async function generateReport(months) {
     ctx.fill();
 
     // Week label (tiny, below bar)
-    ctx.font      = \`500 11px \${FONT}\`;
+    ctx.font      = `500 11px ${FONT}`;
     ctx.fillStyle = C.tx3;
     ctx.textAlign = 'center';
-    const wLabel = d.week ? \`W\${d.week.split('W')[1] || i+1}\` : \`W\${i+1}\`;
+    const wLabel = d.week ? `W${d.week.split('W')[1] || i+1}` : `W${i+1}`;
     ctx.fillText(wLabel, bx + wBarW / 2, wBaseY + 16);
 
     // Count on top of bar
     if (d.count > 0) {
-      ctx.font      = \`600 12px \${FONT}\`;
+      ctx.font      = `600 12px ${FONT}`;
       ctx.fillStyle = C.tx2;
       ctx.fillText(d.count, bx + wBarW / 2, by - 4);
     }
@@ -363,7 +363,7 @@ export async function generateReport(months) {
     ? (s.interviews.reduce((sum, i) => sum + (i.confidence||0), 0) / intCount).toFixed(1)
     : '—';
 
-  ctx.font      = \`700 22px \${FONT}\`;
+  ctx.font      = `700 22px ${FONT}`;
   ctx.fillStyle = C.tx;
   ctx.textAlign = 'left';
   ctx.fillText('Applications & Interviews', 60, y);
@@ -372,7 +372,7 @@ export async function generateReport(months) {
   const appStats = [
     { label:'Applications', value: appCount, color: C.sky   },
     { label:'Mock Sessions', value: intCount, color: C.amber  },
-    { label:'Avg Confidence', value: \`\${avgConf}/5\`, color: C.accent },
+    { label:'Avg Confidence', value: `${avgConf}/5`, color: C.accent },
     { label:'LeetCode Total', value: s.leetcodeCount, color: C.rose  },
   ];
   const appCardW = 248, appCardH = 110;
@@ -389,11 +389,11 @@ export async function generateReport(months) {
     roundRect(ctx, cx, y, appCardW, 3, 14);
     ctx.fill();
 
-    ctx.font      = \`800 40px \${FONT}\`;
+    ctx.font      = `800 40px ${FONT}`;
     ctx.fillStyle = C.tx;
     ctx.textAlign = 'left';
     ctx.fillText(String(stat.value), cx + 20, y + 62);
-    ctx.font      = \`600 13px \${FONT}\`;
+    ctx.font      = `600 13px ${FONT}`;
     ctx.fillStyle = C.tx2;
     ctx.fillText(stat.label, cx + 20, y + 86);
   });
@@ -417,18 +417,18 @@ export async function generateReport(months) {
   ctx.fillStyle = btmLine;
   ctx.fillRect(0, H - 3, W, 3);
 
-  ctx.font      = \`500 16px \${FONT}\`;
+  ctx.font      = `500 16px ${FONT}`;
   ctx.fillStyle = C.tx3;
   ctx.textAlign = 'left';
   ctx.fillText('Generated by Career OS', 60, H - 30);
   ctx.textAlign = 'right';
-  ctx.fillText(\`Keep going. Every task compounds.\`, W - 60, H - 30);
+  ctx.fillText(`Keep going. Every task compounds.`, W - 60, H - 30);
 
   // ── DOWNLOAD ──
   const dataURL = canvas.toDataURL('image/png');
   const link    = document.createElement('a');
   const today   = new Date().toISOString().split('T')[0];
-  link.download  = \`career-os-report-\${today}.png\`;
+  link.download  = `career-os-report-${today}.png`;
   link.href      = dataURL;
   link.click();
 }
@@ -437,7 +437,7 @@ export function render(months) {
   const s = getState();
   const dailyGoal = getDailyGoal();
 
-  return \`
+  return `
 <div class="view-settings" style="max-width:640px;margin:0 auto; padding-bottom:var(--s12);">
   <div class="page-header" style="margin-bottom:var(--s8);">
     <div class="page-title"><i data-lucide="settings" style="width:24px;height:24px;margin-right:8px;vertical-align:text-bottom;"></i> Settings</div>
@@ -450,7 +450,7 @@ export function render(months) {
     <div class="form-group" style="margin-top:var(--s4);">
       <label class="form-label">Daily Task Target</label>
       <div style="display:flex; align-items:center; gap:var(--s4);">
-        <input type="number" id="daily-goal-input" class="form-input" value="\${dailyGoal}" min="1" max="20" style="width:80px;">
+        <input type="number" id="daily-goal-input" class="form-input" value="${dailyGoal}" min="1" max="20" style="width:80px;">
         <span style="font-size:13px; color:var(--tx-3);">tasks per day</span>
       </div>
       <p style="font-size:11px; color:var(--tx-3); margin-top:var(--s2);">Setting a realistic goal helps maintain consistency and accurate velocity tracking.</p>
@@ -466,7 +466,7 @@ export function render(months) {
         <div class="toggle-desc">Switch between professional dark and light modes.</div>
       </div>
       <label class="toggle">
-        <input type="checkbox" id="theme-toggle" \${s.theme==='dark'?'checked':''}>
+        <input type="checkbox" id="theme-toggle" ${s.theme==='dark'?'checked':''}>
         <div class="toggle-slider"></div>
       </label>
     </div>
@@ -523,7 +523,7 @@ export function render(months) {
       Built for AI Engineers. All data is encrypted and stored locally in your browser's IndexedDB/LocalStorage.
     </div>
   </div>
-</div>\`;
+</div>`;
 }
 
 export function mount(months) {
@@ -538,7 +538,7 @@ export function mount(months) {
       const val = parseInt(e.target.value);
       if (val > 0 && val <= 50) {
         setDailyGoal(val);
-        showToast(\`Daily goal updated to \${val} tasks\`, 'success');
+        showToast(`Daily goal updated to ${val} tasks`, 'success');
       }
     });
   }
@@ -586,7 +586,7 @@ export function mount(months) {
   };
 
   window._resetConfirm = () => {
-    window._openModal(\`
+    window._openModal(`
       <div class="modal">
         <div class="modal-title" style="color:var(--rose);">Reset All Progress?</div>
         <p style="font-size:14px; color:var(--tx-2); line-height:1.6; margin-bottom:var(--s6);">
@@ -597,7 +597,7 @@ export function mount(months) {
           <button class="btn btn-danger" onclick="window._doReset()">Yes, Reset Everything</button>
         </div>
       </div>
-    \`);
+    `);
   };
 
   window._doReset = () => {
