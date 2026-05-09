@@ -424,13 +424,228 @@ export async function generateReport(months) {
   ctx.textAlign = 'right';
   ctx.fillText(`Keep going. Every task compounds.`, W - 60, H - 30);
 
-  // ── DOWNLOAD ──
+  // ── EXPORT AS PDF via print window ──
   const dataURL = canvas.toDataURL('image/png');
-  const link    = document.createElement('a');
   const today   = new Date().toISOString().split('T')[0];
-  link.download  = `career-os-report-${today}.png`;
-  link.href      = dataURL;
-  link.click();
+
+  // Open a new window to host the print page
+  const printWin = window.open('', '_blank', 'width=900,height=700');
+
+  if (printWin) {
+    // Write a minimal HTML page: just the image sized to fill A4
+    printWin.document.write(`<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Career OS — Progress Report ${today}</title>
+  <style>
+    /* Reset everything */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 100%;
+      height: 100%;
+      background: #0D0F1A;
+    }
+    /* Screen preview: show centered with shadow */
+    body {
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 20px;
+    }
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      box-shadow: 0 8px 48px rgba(0,0,0,0.6);
+    }
+    /* Print: fill the entire page, no margins, no background color printing issues */
+    @media print {
+      * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+      html, body {
+        width: 210mm;
+        height: 297mm;
+        background: #0D0F1A !important;
+        padding: 0;
+        display: block;
+      }
+      img {
+        width: 210mm;
+        height: 297mm;
+        max-width: 210mm;
+        max-height: 297mm;
+        object-fit: contain;
+        box-shadow: none;
+        display: block;
+        page-break-inside: avoid;
+      }
+      @page {
+        size: A4 portrait;
+        margin: 0;
+      }
+    }
+    /* Instruction bar at top (only visible on screen, hidden on print) */
+    .print-bar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      background: #1A1D2E;
+      border-bottom: 1px solid rgba(255,255,255,0.12);
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-family: -apple-system, 'Inter', sans-serif;
+      font-size: 13px;
+      color: #9BA3C0;
+      z-index: 100;
+    }
+    .print-bar-title {
+      font-weight: 700;
+      color: #EDF0F8;
+      font-size: 14px;
+    }
+    .print-btn {
+      background: #7C6FF7;
+      color: #fff;
+      border: none;
+      padding: 8px 20px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: inherit;
+    }
+    .print-btn:hover { filter: brightness(1.1); }
+    @media print {
+      .print-bar { display: none !important; }
+      body { padding-top: 0; }
+    }
+    /* Push content below fixed bar */
+    .img-wrap { margin-top: 56px; }
+  </style>
+</head>
+<body>
+  <div class="print-bar">
+    <div>
+      <div class="print-bar-title">Career OS — Progress Report</div>
+      <div>In the print dialog, choose "Save as PDF" to save as a real PDF file.</div>
+    </div>
+    <button class="print-btn" onclick="window.print()">
+      🖨 Save as PDF
+    </button>
+  </div>
+  <div class="img-wrap">
+    <img src="${dataURL}" alt="Career OS Progress Report">
+  </div>
+  <script>
+    // Auto-trigger print dialog after image loads
+    const img = document.querySelector('img');
+    img.onload = () => setTimeout(() => window.print(), 600);
+  </script>
+</body>
+</html>`);
+    printWin.document.close();
+
+  } else {
+    // window.open() was blocked (PWA standalone mode or popup blocker)
+    // Fallback: show an in-app overlay with the image + save instructions
+    _showPdfFallback(dataURL, today);
+  }
+}
+
+function _showPdfFallback(dataURL, today) {
+  // Remove any existing overlay
+  document.getElementById('pdf-fallback-overlay')?.remove();
+
+  const overlay = document.createElement('div');
+  overlay.id = 'pdf-fallback-overlay';
+  overlay.style.cssText = `
+    position: fixed; inset: 0; z-index: 9000;
+    background: rgba(0,0,0,0.85); backdrop-filter: blur(8px);
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: flex-start;
+    padding: 16px; overflow-y: auto;
+  `;
+
+  overlay.innerHTML = `
+    <div style="
+      width: 100%; max-width: 480px;
+      background: #1A1D2E;
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 16px;
+      overflow: hidden;
+      margin-bottom: 16px;
+    ">
+      <!-- Header -->
+      <div style="
+        padding: 16px 20px;
+        border-bottom: 1px solid rgba(255,255,255,0.08);
+        display: flex; align-items: center; justify-content: space-between;
+      ">
+        <div>
+          <div style="font-size:15px;font-weight:700;color:#EDF0F8;margin-bottom:2px;">
+            Progress Report Ready
+          </div>
+          <div style="font-size:12px;color:#9BA3C0;">
+            Tap and hold the image → Save Image
+          </div>
+        </div>
+        <button id="pdf-close-btn" style="
+          width:32px; height:32px; border-radius:50%;
+          background: rgba(255,255,255,0.08);
+          border: none; color: #9BA3C0;
+          font-size: 18px; cursor: pointer;
+          display:flex; align-items:center; justify-content:center;
+        ">✕</button>
+      </div>
+
+      <!-- Instructions -->
+      <div style="padding: 14px 20px; background: rgba(124,111,247,0.08); border-bottom:1px solid rgba(255,255,255,0.06);">
+        <div style="font-size:12px;color:#9BA3C0;line-height:1.6;">
+          <strong style="color:#7C6FF7;">On Android Chrome:</strong>
+          Tap &amp; hold image → "Save image"<br>
+          <strong style="color:#7C6FF7;">On iOS Safari:</strong>
+          Tap &amp; hold image → "Save to Photos" or "Share"<br>
+          <strong style="color:#7C6FF7;">To get PDF:</strong>
+          Share image → Print → Pinch outward on preview
+        </div>
+      </div>
+
+      <!-- Preview image (scaled down) -->
+      <div style="padding:16px; text-align:center;">
+        <img src="${dataURL}"
+             style="width:100%;border-radius:8px;box-shadow:0 4px 24px rgba(0,0,0,0.5);"
+             alt="Progress Report">
+      </div>
+
+      <!-- Download PNG button as last resort -->
+      <div style="padding:0 16px 16px;">
+        <a href="${dataURL}"
+           download="career-os-report-${today}.png"
+           style="
+             display:block; text-align:center;
+             background:#7C6FF7; color:#fff;
+             padding:12px; border-radius:10px;
+             font-size:14px; font-weight:600;
+             text-decoration:none;
+           ">
+          ⬇ Download as Image
+        </a>
+      </div>
+    </div>
+  `;
+
+  document.body.appendChild(overlay);
+
+  // Close button
+  document.getElementById('pdf-close-btn')?.addEventListener('click', () => {
+    overlay.remove();
+  });
+
+  // Tap outside to close
+  overlay.addEventListener('click', (e) => {
+    if (e.target === overlay) overlay.remove();
+  });
 }
 
 export function render(months) {
@@ -495,11 +710,11 @@ export function render(months) {
         </button>
         <!-- New: Visual report -->
         <button class="btn btn-primary" onclick="window._exportReport()" id="export-report-btn" style="justify-content:center;">
-          <i data-lucide="image" style="width:16px;height:16px;margin-right:6px;"></i> Export Report
+          <i data-lucide="file-text" style="width:16px;height:16px;margin-right:6px;"></i> Export PDF
         </button>
       </div>
       <p style="font-size:11px;color:var(--tx-3);margin-top:var(--s2);">
-        JSON backup for data safety · Report PNG is shareable &amp; printable
+        JSON backup for data safety · PDF opens print dialog — choose "Save as PDF"
       </p>
 
       <div style="position:relative; margin-top: var(--s2);">
@@ -564,7 +779,7 @@ export function mount(months) {
       showToast('Report failed. Try again.', 'error');
     }
     if (btn) {
-      btn.innerHTML = '<i data-lucide="image" style="width:16px;height:16px;margin-right:6px;"></i> Export Report';
+      btn.innerHTML = '<i data-lucide="file-text" style="width:16px;height:16px;margin-right:6px;"></i> Export PDF';
       btn.disabled = false;
       if (window.lucide) window.lucide.createIcons();
     }
