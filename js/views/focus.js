@@ -193,7 +193,7 @@ export function render(months) {
   </div>
 
 </div><!-- /view-focus -->
-\`;
+`;
 }
 
 export function mount(months) {
@@ -207,7 +207,7 @@ export function mount(months) {
     const s = _timeLeft % 60;
     const timeText = document.getElementById('pomo-time-text');
     if (timeText) {
-        timeText.textContent = \`\${String(m).padStart(2,'0')}:\${String(s).padStart(2,'0')}\`;
+        timeText.textContent = `${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
     }
 
     // 2. SVG arc offset
@@ -224,7 +224,7 @@ export function mount(months) {
     if (modeText) modeText.textContent = cfg.label;
 
     // 4. Shell background class
-    if (shell) shell.className = \`pomo-shell mode-\${_mode}\`;
+    if (shell) shell.className = `pomo-shell mode-${_mode}`;
 
     // 5. Phase label (top-left of card)
     const labels = { work:'FOCUS SESSION', short:'SHORT BREAK', long:'LONG BREAK' };
@@ -251,7 +251,7 @@ export function mount(months) {
 
     // 8. Session dots
     for (let i = 0; i < 4; i++) {
-      const dot = document.getElementById(\`pdot-\${i}\`);
+      const dot = document.getElementById(`pdot-${i}`);
       if (!dot) continue;
       dot.className = 'pomo-dot';
       if (i < _cyclePos)  dot.classList.add('done');   // past sessions
@@ -264,7 +264,7 @@ export function mount(months) {
     const sc = document.getElementById('stat-cycle');
     if (ss) ss.textContent = _sessToday;
     if (sm) sm.textContent = _focusMins;
-    if (sc) sc.textContent = \`\${_cyclePos + 1}/4\`;
+    if (sc) sc.textContent = `${_cyclePos + 1}/4`;
 
     // 10. Duration row: hide during break modes
     const durRow = document.getElementById('pomo-dur-row');
@@ -274,7 +274,7 @@ export function mount(months) {
     if (_running) {
       const min = String(Math.floor(_timeLeft/60)).padStart(2,'0');
       const sec = String(_timeLeft%60).padStart(2,'0');
-      document.title = \`\${min}:\${sec} — \${cfg.label} · Career OS\`;
+      document.title = `${min}:${sec} — ${cfg.label} · Career OS`;
     } else {
       document.title = 'Career OS';
     }
@@ -317,7 +317,7 @@ export function mount(months) {
 
       const nextBreak = _cyclePos === 0 ? 'long' : 'short';
       const breakLabel = nextBreak === 'long' ? '15-min long break' : '5-min short break';
-      showToast(\`Session complete! Starting \${breakLabel}.\`, 'flame');
+      showToast(`Session complete! Starting ${breakLabel}.`, 'flame');
 
       // Auto-advance to break after 1.5s
       setTimeout(() => _setMode(nextBreak), 1500);
@@ -487,34 +487,34 @@ export function mount(months) {
   if (taskListEl) {
     const tasks = getTodayTasks(months, 6);
     if (!tasks.length) {
-      taskListEl.innerHTML = \`
+      taskListEl.innerHTML = `
         <div class="empty-state" style="padding:var(--s10);">
           <div class="empty-state-icon">
             <i data-lucide="check-circle" style="width:40px;height:40px;color:var(--accent);opacity:0.5;"></i>
           </div>
           <div class="empty-state-title">All caught up!</div>
           <div class="empty-state-desc">No pending tasks for today. Check the full roadmap.</div>
-        </div>\`;
+        </div>`;
     } else {
       taskListEl.innerHTML = tasks.map(t => {
         const done = !!getState().checked[t.id];
-        return \`
-          <div class="task-row focus-task\${done?' task-done':''}"
-               data-id="\${t.id}" data-xp="\${t.task.xp||10}"
-               style="\${done?'opacity:0.45':''}">
-            <div class="task-check\${done?' done':''}" id="fchk-\${t.id}">
-              \${done?'<i data-lucide="check" style="width:13px;height:13px;"></i>':''}
+        return `
+          <div class="task-row focus-task${done?' task-done':''}"
+               data-id="${t.id}" data-xp="${t.task.xp||10}"
+               style="${done?'opacity:0.45':''}">
+            <div class="task-check${done?' done':''}" id="fchk-${t.id}">
+              ${done?'<i data-lucide="check" style="width:13px;height:13px;"></i>':''}
             </div>
             <div class="task-info" style="flex:1;min-width:0;">
-              <div class="task-name\${done?' done':''}" id="fnm-\${t.id}">\${t.task.t}</div>
+              <div class="task-name${done?' done':''}" id="fnm-${t.id}">${t.task.t}</div>
               <div class="task-sub" style="margin-top:2px;">
-                \${t.monthTitle}
-                <span class="skill-badge skill-\${t.skill}"
-                      style="font-size:9px;padding:1px 7px;margin-left:4px;">\${t.skill}</span>
+                ${t.monthTitle}
+                <span class="skill-badge skill-${t.skill}"
+                      style="font-size:9px;padding:1px 7px;margin-left:4px;">${t.skill}</span>
               </div>
             </div>
-            <div class="task-xp">+\${t.task.xp||10}</div>
-          </div>\`;
+            <div class="task-xp">+${t.task.xp||10}</div>
+          </div>`;
       }).join('');
 
       document.querySelectorAll('.focus-task').forEach(row => {
