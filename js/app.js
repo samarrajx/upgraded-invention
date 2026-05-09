@@ -29,7 +29,7 @@ function init() {
   const state = getState();
 
   // 2. Set Theme
-  document.body.className = `theme-${state.theme}`;
+  document.documentElement.setAttribute('data-theme', state.theme);
 
   // 3. Initialize Router
   initRouter(routes, ROADMAP_DATA);
